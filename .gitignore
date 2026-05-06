@@ -1,0 +1,5 @@
+DBpass.txt
+*.docx
+*.pdf
+backend/__pycache__/
+.vscode/
