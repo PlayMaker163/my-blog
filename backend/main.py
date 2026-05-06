@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
+import os
 import certifi
-import uvicorn  # <--- ဒါလေး ပါရပါမယ်
 
 app = FastAPI()
 
 # --- CORS Settings ---
+# ဒါက Frontend ကနေ လှမ်းခေါ်ရင် Error မတက်အောင် ကာကွယ်ပေးတယ်
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,24 +18,27 @@ app.add_middleware(
 # --- MongoDB Atlas Connection ---
 ca = certifi.where()
 
-ATLAS_URI = "mongodb+srv://aungsandar1410_db_user:A74zKtXJ6nBPAvE9@cluster0.mg0qgnc.mongodb.net/?appName=Cluster0"
+# Render ရဲ့ Environment ထဲက DATABASE_URL ကို ယူသုံးမယ်
+# တကယ်လို့ ရှာမတွေ့ရင် မင်းပေးထားတဲ့ link ကို သုံးမယ်
+ATLAS_URI = os.getenv(
+    "DATABASE_URL",
+    "mongodb+srv://aungsandar1410_db_user:A74zKtXJ6nBPAvE9@cluster0.mg0qgnc.mongodb.net/?appName=Cluster0",
+)
 
-
-client = MongoClient(ATLAS_URI, tlsAllowInvalidCertificates=True)
-
+client = MongoClient(ATLAS_URI, tlsCAFile=ca)
 db = client.blog_database
 posts_collection = db.posts
 
 
-@app.get("/api/posts")
+@app.get("/")
+async def root():
+    return {"message": "Backend is running!"}
+
+
+@app.get("/posts")  # လမ်းကြောင်းကို /posts လို့ပဲ ထားလိုက်မယ်
 async def get_all_posts():
     posts = []
-    # Database ထဲက data တွေကို ရှာမယ်
     for post in posts_collection.find():
         post["_id"] = str(post["_id"])
         posts.append(post)
     return posts
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

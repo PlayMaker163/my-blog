@@ -1,10 +1,15 @@
 async function loadBlogPosts() {
     try {
-        const response = await fetch('http://localhost:8000/api/posts');
-        const posts = await response.json();
+        // fetch ထဲမှာ Render Backend URL ကို အမှန်အတိုင်း ထည့်ထားတယ်
+        const response = await fetch('https://my-blog-5ygr.onrender.com/posts');
 
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const posts = await response.json();
         const contentDiv = document.getElementById('content');
-        contentDiv.innerHTML = ""; // အဟောင်းတွေကို ရှင်းထုတ်မယ်
+        contentDiv.innerHTML = "";
 
         posts.forEach(post => {
             contentDiv.innerHTML += `
@@ -16,7 +21,8 @@ async function loadBlogPosts() {
             `;
         });
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error loading posts:", error);
+        document.getElementById('content').innerHTML = "စာမူများ ဆွဲယူရာတွင် အမှားအယွင်း ရှိနေပါသည်။";
     }
 }
 
