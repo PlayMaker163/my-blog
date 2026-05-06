@@ -1,0 +1,3 @@
+username == aungsandar1410_db_user
+password == A74zKtXJ6nBPAvE9
+code == mongodb+srv://aungsandar1410_db_user:A74zKtXJ6nBPAvE9@cluster0.mg0qgnc.mongodb.net/?appName=Cluster0
