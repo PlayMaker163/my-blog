@@ -1,29 +1,34 @@
+const contentDiv = document.getElementById('content');
+
+// ၂။ Backend ဆီကနေ Data သွားတောင်းတဲ့ Function
 async function loadBlogPosts() {
     try {
-        // fetch ထဲမှာ Render Backend URL ကို အမှန်အတိုင်း ထည့်ထားတယ်
+        // မင်းရဲ့ Render Backend URL ကို ဒီမှာသေချာထည့်ပါ
         const response = await fetch('https://my-blog-5ygr.onrender.com/posts');
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
         const posts = await response.json();
-        const contentDiv = document.getElementById('content');
-        contentDiv.innerHTML = "";
 
+        // အရင်ရှိနေတဲ့ စာဟောင်းတွေကို ရှင်းထုတ်မယ်
+        contentDiv.innerHTML = '';
+
+        // ၃။ ရလာတဲ့ data တွေကို မင်း ခုနကပြောတဲ့ code လေးနဲ့ ပတ်ပြီးပြမယ်
         posts.forEach(post => {
             contentDiv.innerHTML += `
-                <div style="border-bottom: 1px solid #ddd; margin-bottom: 20px; padding-bottom: 10px;">
-                    <h2>${post.title}</h2>
-                    <p>${post.content}</p>
-                    <small>By: ${post.author}</small>
+                <div class="card">
+                    <span style="color: #2563eb; font-size: 0.8rem; font-weight: bold;">NEW LESSON</span>
+                    <h2 style="margin: 10px 0; color: #1e293b;">${post.title}</h2>
+                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 15px;">${post.content}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 15px;">
+                        <small>By: <b>${post.author}</b></small>
+                        <a href="#" style="color: #2563eb; text-decoration: none; font-weight: 600;">Read More →</a>
+                    </div>
                 </div>
             `;
         });
     } catch (error) {
-        console.error("Error loading posts:", error);
-        document.getElementById('content').innerHTML = "စာမူများ ဆွဲယူရာတွင် အမှားအယွင်း ရှိနေပါသည်။";
+        console.error('Error fetching posts:', error);
+        contentDiv.innerHTML = '<p>သင်ခန်းစာများ ဆွဲယူရာတွင် အမှားအယွင်းရှိနေပါသည်။</p>';
     }
 }
 
+// ၄။ Website ပွင့်တာနဲ့ အပေါ်က function ကို စခိုင်းမယ်
 loadBlogPosts();
