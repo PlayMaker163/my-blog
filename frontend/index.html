@@ -2,41 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta name="google-site-verification" content="KtznoveH_Ks75Y1Il6AUZqgLiiRJidvCN3mZPEbUOZA" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduConnect - Empower Your Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AI & DIGITAL SOLUTIONS | Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body>
+<body data-theme="dark">
     <nav class="navbar">
-        <div class="logo">Edu<span>Connect</span></div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#" class="btn-primary">Get Started</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>ပညာရေးဖြင့် သင့်အနာဂတ်ကို <br><span class="highlight">အကောင်းဆုံး တည်ဆောက်ပါ။</span></h1>
-            <p>အရည်အသွေးမြင့် သင်ခန်းစာများကို တစ်နေရာတည်းတွင် အခမဲ့ လေ့လာနိုင်ပါသည်။</p>
-            <div class="hero-btns">
-                <button class="btn-primary">သင်ခန်းစာများ ကြည့်မည်</button>
-                <button class="btn-secondary">ပိုမိုလေ့လာရန်</button>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Agency Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & DIGITAL</span>
+                <span class="brand-tagline">SOLUTIONS</span>
             </div>
         </div>
-    </header>
 
-    <section class="container">
-        <h2 class="section-title">နောက်ဆုံးတင်ထားသော သင်ခန်းစာများ</h2>
-        <div id="content" class="blog-grid">
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" data-key="nav-services">Our Services</a></li>
+            <li><a href="index.html#portfolio" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="index.html#contact" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-extras">
+            <a href="#" class="btn-login">Login</a>
+            <a href="#" class="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
         </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <h1 class="hero-title" data-key="home-title">Welcome to AI & Digital Solutions</h1>
+                <p class="hero-subtitle" data-key="home-subtitle">Empower your business with cutting-edge technology</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn-get-started" data-key="btn-get-started">Get Started <i
+                            class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn-contact-us" data-key="btn-contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="feature-image-wrapper">
+                    <img src="logo.jpg" alt="Feature Logo" class="agency-logo-large">
+                    <div class="system-status"><span class="dot"></span> System Status: Online</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logos-container">
+            <div class="logos-wrapper">
+                <div class="logos-slide">
+                    <img src="assets/logos/ai.jpg" alt="AI">
+                    <img src="assets/logos/js.png" alt="JS">
+                    <img src="assets/logos/python.jpg" alt="Python">
+                    <img src="assets/logos/fastapi.png" alt="FastAPI">
+                    <img src="assets/logos/nvidia.png" alt="NVIDIA">
+                </div>
+                <div class="logos-slide">
+                    <img src="assets/logos/ai.jpg" alt="AI">
+                    <img src="assets/logos/js.png" alt="JS">
+                    <img src="assets/logos/python.jpg" alt="Python">
+                    <img src="assets/logos/fastapi.png" alt="FastAPI">
+                    <img src="assets/logos/nvidia.png" alt="NVIDIA">
+                </div>
+            </div>
+        </div>
+        <i class="fas fa-chevron-down scroll-down-icon"></i>
     </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Logo">
+                    <span>AI & DIGITAL SOLUTIONS</span>
+                </div>
+                <p data-key="footer-desc">ကျွန်ုပ်တို့သည် ခေတ်မီဆန်းသစ်သော AI နည်းပညာများနှင့် Digital
+                    ဝန်ဆောင်မှုများကို အသုံးပြု၍ သင့်လုပ်ငန်းများကို အကောင်းဆုံး ကူညီဆောင်ရွက်ပေးနေပါသည်။</p>
+            </div>
+            <div class="footer-links">
+                <h3 data-key="footer-quick-links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-key="nav-home">Home</a></li>
+                    <li><a href="about.html" data-key="nav-about">About Us</a></li>
+                    <li><a href="index.html#services" data-key="nav-services">Services</a></li>
+                    <li><a href="index.html#portfolio" data-key="nav-portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact" data-key="nav-contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-key="footer-contact-title">Contact Us</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>aungsandar1410@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+95 9885383871</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Myoma Market, Naypyidaw</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI & DIGITAL SOLUTIONS. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

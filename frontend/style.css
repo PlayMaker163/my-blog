@@ -1,127 +1,659 @@
+/* --- ၁။ Theme Variables --- */
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e293b;
-    --accent-color: #3b82f6;
+    --bg-color: #0b0d17;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --nav-bg: rgba(11, 13, 23, 0.95);
+    /* နည်းနည်း ပိုအရောင်ရင့်ထားသည် */
+    --primary-blue: #3b82f6;
+    --text-dim: #cbd5e1;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --hero-overlay: linear-gradient(135deg, rgba(11, 13, 23, 0.6) 0%, rgba(11, 13, 23, 0.9) 100%);
+}
+
+[data-theme="light"] {
     --bg-color: #f8fafc;
-    --text-color: #334155;
+    --text-color: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+    --text-dim: #475569;
+    --glass-border: rgba(15, 23, 42, 0.1);
+    --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.7) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    transition: 0.3s ease;
 }
 
 body {
-    font-family: 'Inter', 'Pyidaungsu', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Navbar */
+/* --- ၂။ Navbar (ပိုကြီးပြီး Bold တင်ထားသည်) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 10%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 18px 5%;
+    /* Bar ကို နည်းနည်း ပိုကြီးစေရန် Padding တိုးထားသည် */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--secondary-color);
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.logo span {
-    color: var(--primary-color);
+.agency-logo-small {
+    height: 45px;
+    /* Logo ကို အနည်းငယ် ပိုကြီးထားသည် */
+    width: auto;
+    border-radius: 6px;
+}
+
+.brand-name {
+    font-size: 1.4rem;
+    /* စာလုံးကြီးပေးထားသည် */
+    font-weight: 800;
+    /* Extra Bold */
+}
+
+.brand-tagline {
+    font-size: 0.7rem;
+    color: var(--primary-blue);
+    font-weight: 800;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    align-items: center;
+    gap: 30px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: 0.3s;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    /* Menu စာလုံးကြီးပေးထားသည် */
+    font-weight: 700;
+    /* Bold တင်ထားသည် */
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--primary-blue);
 }
 
-/* Hero Section */
+.nav-extras {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.btn-login {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    /* Bold */
+}
+
+.btn-signup {
+    text-decoration: none;
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    /* Bold */
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-weight: 700;
+}
+
+#lang-switch {
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+    outline: none;
+}
+
+#theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* --- ၃။ Hero Section --- */
 .hero {
-    padding: 100px 10%;
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 160px 5% 40px 5%;
+    position: relative;
+    background: var(--hero-overlay), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    z-index: 2;
+    margin-bottom: 60px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
 }
 
 .highlight {
-    color: var(--primary-color);
+    color: var(--primary-blue);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-inline: auto;
+.hero-subtitle {
+    color: var(--text-dim);
+    font-size: 1.4rem;
+    margin: 25px 0 40px;
+    font-weight: 600;
 }
 
-/* Buttons */
-.btn-primary {
-    background: var(--primary-color);
+.hero-btns {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-get-started {
+    background: var(--primary-blue);
     color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn-secondary {
+.btn-contact-us {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+}
+
+.feature-image-wrapper {
     background: transparent;
-    color: var(--primary-color);
-    padding: 0.8rem 2rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    margin-left: 10px;
-    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.agency-logo-large {
+    width: 100%;
+    min-width: 480px;
+    max-width: 580px;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* --- ၄။ Logo Marquee --- */
+.logos-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.logos-wrapper {
+    display: flex;
+    width: fit-content;
+}
+
+.logos-slide {
+    display: flex;
+    align-items: center;
+    animation: 30s slide infinite linear;
+}
+
+.logos-slide img {
+    height: 90px;
+    margin: 0 55px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.logos-slide img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.scroll-down-icon {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-dim);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* --- ၅။ System Status --- */
+.system-status .dot {
+    height: 10px;
+    width: 10px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* --- ၆။ About Section (Badge ဖျက်ပြီး စာသားကြီးထားသည်) --- */
+.about {
+    padding: 100px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    position: relative;
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* အပြာရောင်အကွက် (Badge) ကို ဖျက်လိုက်သည် */
+.experience-badge {
+    display: none;
+}
+
+.sub-title {
+    font-size: 1.8rem;
+    /* "ကျွန်ုပ်တို့အကြောင်း" စာသားကို ကြီးပေးထားသည် */
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    display: block;
+}
+
+.about-description {
+    font-size: 1.35rem;
+    /* စာသားကို ကြီးပေးထားသည် */
+    font-weight: 600;
+    /* Bold တင်ထားသည် */
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.about-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 45px;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dim);
+}
+
+/* --- ၇။ Footer Styling --- */
+.footer {
+    background-color: #05070a;
+    padding: 80px 5% 30px 5%;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 50px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    height: 45px;
+    border-radius: 6px;
+}
+
+.footer-logo span {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+}
+
+.footer-about p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    margin-bottom: 30px;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.footer-links ul li {
+    margin-bottom: 15px;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 1rem;
     font-weight: 600;
 }
 
-/* Blog Grid (Course Cards) */
-.blog-grid {
+.footer-links ul li a:hover {
+    color: var(--primary-blue);
+    padding-left: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+
+.contact-item i {
+    color: var(--primary-blue);
+    width: 25px;
+    text-align: center;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--glass-border);
+    margin-top: 60px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* --- ၈။ Responsive Design --- */
+@media (max-width: 992px) {
+
+    .about-container,
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-stats,
+    .footer-logo {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* --- အရင်ရှိပြီးသား CSS တွေကို မထိဘဲ အောက်ဆုံးမှာ ဒီအပိုင်းကို ထပ်တိုးပေးပါ --- */
+
+.team-section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header .sub-title {
+    color: var(--primary-blue);
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 40px 10%;
+    grid-template-columns: repeat(5, 1fr);
+    /* လူ ၅ ယောက် တစ်တန်းတည်း */
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.card {
-    background: white;
-    padding: 1.5rem;
+.team-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid var(--glass-border);
+    transition: 0.4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.member-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    /* ပုံတွေကို စတုရန်းပုံစံ ညီအောင်ထားသည် */
+    overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: 0.3s;
-    border: 1px solid #e2e8f0;
+    margin-bottom: 15px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+    /* နာမည်ကို အဖြူရောင်ထားသည် */
+}
+
+.member-info p {
+    font-size: 0.85rem;
+    color: var(--primary-blue);
+    /* ရာထူးကို အပြာရောင်ထားသည် */
+    font-weight: 600;
+}
+
+/* Mobile အတွက် တန်းစီပုံ ပြန်ညှိခြင်း */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Services Page Styles --- */
+.services-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card ကို Hover လုပ်ရင် ဖြစ်မယ့် Effect */
+.service-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--primary-blue));
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+.service-card p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Mobile အတွက် ညှိချက် */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 }
