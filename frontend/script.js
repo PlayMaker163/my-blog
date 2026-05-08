@@ -5,6 +5,8 @@ const translations = {
         'nav-services': 'Our Services',
         'nav-portfolio': 'Our Portfolio',
         'nav-contact': 'Contact Us',
+        'btn-login': 'Login',
+        'btn-signup': 'Sign Up',
         'home-title': 'Welcome to <br> AI & Digital Solutions',
         'home-subtitle': 'Empower your business with cutting-edge technology',
         'btn-get-started': 'Get Started',
@@ -24,7 +26,7 @@ const translations = {
         // About Us Section
         'about-sub-title': 'About Us',
         'about-main-title': 'AI & Digital Solutions',
-        'about-desc': 'We are a team of dedicated developers and innovators committed to delivering high-quality software, mobile apps, and digital solutions. Our mission is to transform your business ideas into reality using cutting-edge technology.',
+        'about-desc': 'We are a team of dedicated developers and innovators committed to delivering high-quality software, mobile apps, and digital solutions.',
         'about-exp-num': '10+',
         'about-exp-text': 'Years Experience',
         'stat-projects': '100+',
@@ -35,6 +37,7 @@ const translations = {
         'stat-exp-text': 'Years Exp',
 
         // Team Section
+        'team-sub-title': 'TEAM',
         'team-title': 'Our Team Members',
         'team-1-name': 'DR.Hein Htun',
         'team-1-role': 'CEO',
@@ -50,7 +53,8 @@ const translations = {
         // Footer
         'footer-desc': 'Empowering your business with innovative AI solutions and future-ready digital experiences.',
         'footer-quick-links': 'Quick Links',
-        'footer-contact-title': 'Contact Us'
+        'footer-contact-title': 'Contact Us',
+        'footer-location': 'Myoma Market, Naypyidaw'
     },
     'mm': {
         'nav-home': 'ပင်မစာမျက်နှာ',
@@ -58,6 +62,8 @@ const translations = {
         'nav-services': 'ဝန်ဆောင်မှုများ',
         'nav-portfolio': 'လက်ရာများ',
         'nav-contact': 'ဆက်သွယ်ရန်',
+        'btn-login': 'ဝင်ရောက်ရန်',
+        'btn-signup': 'စာရင်းသွင်းရန်',
         'home-title': 'AI & Digital Solutions မှ <br> ကြိုဆိုပါသည်',
         'home-subtitle': 'ခေတ်မီနည်းပညာများဖြင့် သင်၏စီးပွားရေးကို မြှင့်တင်လိုက်ပါ',
         'btn-get-started': 'စတင်ရန်',
@@ -77,7 +83,7 @@ const translations = {
         // About Us Section
         'about-sub-title': 'ကျွန်ုပ်တို့အကြောင်း',
         'about-main-title': 'AI & Digital Solutions',
-        'about-desc': 'ကျွန်ုပ်တို့သည် အရည်အသွေးမြင့် Software များ၊ Mobile Application များနှင့် Digital ဝန်ဆောင်မှုများကို အကောင်းဆုံး ဖန်တီးပေးနေသည့် အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။ လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများကို ခေတ်မီနည်းပညာများ အသုံးပြု၍ ပိုမိုတိုးတက်အောင် ကူညီဆောင်ရွက်ပေးရန်မှာ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်ဖြစ်ပါသည်။',
+        'about-desc': 'ကျွန်ုပ်တို့သည် အရည်အသွေးမြင့် Software များ၊ Mobile Application များနှင့် Digital ဝန်ဆောင်မှုများကို အကောင်းဆုံး ဖန်တီးပေးနေသည့် အဖွဲ့အစည်းတစ်ခု ဖြစ်ပါသည်။',
         'about-exp-num': '၁၀+',
         'about-exp-text': 'နှစ်အတွေ့အကြုံ',
         'stat-projects': '၁၀၀+',
@@ -88,6 +94,7 @@ const translations = {
         'stat-exp-text': 'နှစ်အတွေ့အကြုံ',
 
         // Team Section
+        'team-sub-title': 'အဖွဲ့သားများ',
         'team-title': 'ကျွန်ုပ်တို့၏အဖွဲ့ဝင်များ',
         'team-1-name': 'Dr.Hein Htun',
         'team-1-role': 'CEO',
@@ -103,16 +110,17 @@ const translations = {
         // Footer
         'footer-desc': 'ကျွန်ုပ်တို့သည် ခေတ်မီဆန်းသစ်သော AI နည်းပညာများနှင့် Digital ဝန်ဆောင်မှုများကို အသုံးပြု၍ သင့်လုပ်ငန်းများကို အကောင်းဆုံး ကူညီဆောင်ရွက်ပေးနေပါသည်။',
         'footer-quick-links': 'အမြန်သွားရန်',
-        'footer-contact-title': 'ဆက်သွယ်ရန်'
+        'footer-contact-title': 'ဆက်သွယ်ရန်',
+        'footer-location': 'မြို့မဈေး၊ နေပြည်တော်'
     }
 };
 
-// ဘာသာစကား ပြောင်းလဲပေးသည့် function
+// ၁။ ဘာသာစကား ပြောင်းလဲပေးသည့် function
 function updateContent(lang) {
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (translations[lang] && translations[lang][key]) {
-            // ပြင်ဆင်ချက်- .textContent အစား .innerHTML ကို သုံးထားသည်
+            // .innerHTML သုံးထားသဖြင့် <br> အလုပ်လုပ်မည်ဖြစ်သည်
             el.innerHTML = translations[lang][key];
         }
     });
@@ -120,6 +128,21 @@ function updateContent(lang) {
     if (document.getElementById('lang-switch')) {
         document.getElementById('lang-switch').value = lang;
     }
+}
+
+// ၂။ လက်ရှိရောက်နေသည့် စာမျက်နှာကို Highlighting လုပ်ပေးသည့် function
+function setActiveNavLink() {
+    const currentLocation = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll('.nav-links li a');
+
+    navLinks.forEach(link => {
+        // href နာမည်နှင့် လက်ရှိဖိုင်နာမည် တူပါက 'active' class ထည့်သည်
+        if (link.getAttribute('href') === currentLocation) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 }
 
 // Language Switch Event
@@ -147,14 +170,19 @@ if (themeToggle) {
     });
 }
 
-// စာမျက်နှာ စဖွင့်လိုက်တိုင်း Theme ရော Language ပါ ပြန်စစ်ဆေးခြင်း
+// စာမျက်နှာ စဖွင့်လိုက်တိုင်း Theme၊ Language နှင့် Active Link ကို စစ်ဆေးခြင်း
 window.addEventListener('DOMContentLoaded', () => {
+    // Theme စစ်ဆေးခြင်း
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     if (themeIcon) {
         themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
+    // Language စစ်ဆေးခြင်း
     const savedLang = localStorage.getItem('selectedLang') || 'en';
     updateContent(savedLang);
+
+    // Active Link စစ်ဆေးခြင်း
+    setActiveNavLink();
 });

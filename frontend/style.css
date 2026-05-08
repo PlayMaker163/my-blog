@@ -657,3 +657,13 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Active Link အတွက် အပြာရောင်မျဉ်းလေး ပေါ်စေရန် */
+.nav-links li a.active {
+    color: #007bff;
+    /* စာသားကို အပြာရောင်ပြောင်းရန် */
+    border-bottom: 2px solid #007bff;
+    /* အောက်က မျဉ်းပြာလေး တားရန် */
+    padding-bottom: 5px;
+    font-weight: bold;
+}
