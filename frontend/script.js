@@ -89,15 +89,15 @@ const translations = {
 
         // Team Section
         'team-title': 'ကျွန်ုပ်တို့၏အဖွဲ့ဝင်များ',
-        'team-1-name': 'DR.Hein Htun',
+        'team-1-name': 'Dr.Hein Htun',
         'team-1-role': 'CEO',
-        'team-2-name': 'MR.Thein Htike Swe',
+        'team-2-name': 'Mr.Thein Htike Swe',
         'team-2-role': 'Developer',
-        'team-3-name': 'MR.Aung Kyaw San',
+        'team-3-name': 'Mr.Aung Kyaw San',
         'team-3-role': 'Developer',
-        'team-4-name': 'DR.Naing Zaw Aung',
+        'team-4-name': 'Dr.Naing Zaw Aung',
         'team-4-role': 'Software Engineer',
-        'team-5-name': 'MR.Lwin Moe',
+        'team-5-name': 'Mr.Lwin Moe',
         'team-5-role': 'AI Specialist',
 
         // Footer
