@@ -5,7 +5,7 @@ const translations = {
         'nav-services': 'Our Services',
         'nav-portfolio': 'Our Portfolio',
         'nav-contact': 'Contact Us',
-        'home-title': 'Welcome to AI & Digital Solutions',
+        'home-title': 'Welcome to <br> AI & Digital Solutions',
         'home-subtitle': 'Empower your business with cutting-edge technology',
         'btn-get-started': 'Get Started',
         'btn-contact': 'Contact Us',
@@ -58,7 +58,7 @@ const translations = {
         'nav-services': 'ဝန်ဆောင်မှုများ',
         'nav-portfolio': 'လက်ရာများ',
         'nav-contact': 'ဆက်သွယ်ရန်',
-        'home-title': 'AI & Digital Solutions မှ ကြိုဆိုပါသည်',
+        'home-title': 'AI & Digital Solutions မှ <br> ကြိုဆိုပါသည်',
         'home-subtitle': 'ခေတ်မီနည်းပညာများဖြင့် သင်၏စီးပွားရေးကို မြှင့်တင်လိုက်ပါ',
         'btn-get-started': 'စတင်ရန်',
         'btn-contact': 'ဆက်သွယ်ရန်',
@@ -112,10 +112,11 @@ function updateContent(lang) {
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
+            // ပြင်ဆင်ချက်- .textContent အစား .innerHTML ကို သုံးထားသည်
+            el.innerHTML = translations[lang][key];
         }
     });
-    // Dropdown value ကိုလည်း ညှိပေးရန်
+
     if (document.getElementById('lang-switch')) {
         document.getElementById('lang-switch').value = lang;
     }
@@ -126,7 +127,7 @@ const langSwitch = document.getElementById('lang-switch');
 if (langSwitch) {
     langSwitch.addEventListener('change', (e) => {
         const lang = e.target.value;
-        localStorage.setItem('selectedLang', lang); // ရွေးလိုက်တဲ့ ဘာသာစကားကို သိမ်းထားမယ်
+        localStorage.setItem('selectedLang', lang);
         updateContent(lang);
     });
 }
@@ -148,14 +149,12 @@ if (themeToggle) {
 
 // စာမျက်နှာ စဖွင့်လိုက်တိုင်း Theme ရော Language ပါ ပြန်စစ်ဆေးခြင်း
 window.addEventListener('DOMContentLoaded', () => {
-    // ၁။ Theme ကို ပြန်စစ်
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     if (themeIcon) {
         themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
-    // ၂။ ဘာသာစကားကို ပြန်စစ်
     const savedLang = localStorage.getItem('selectedLang') || 'en';
     updateContent(savedLang);
 });
