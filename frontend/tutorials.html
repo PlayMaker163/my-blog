@@ -231,54 +231,56 @@
             </div>
 
             <div class="tutorial-grid">
-                <div class="tutorial-card" onclick="window.location.href='https://t.me/c/3621711904/2'">
+                <div class="tutorial-card" onclick="window.location.href='https://t.me/+bYNHep2UXCEyNzc1'">
                     <img src="assets/logos/tutorials/youtube-monetization.jpg" alt="YouTube">
                     <div class="card-body">
-                        <h3 data-key="tut-1-title" style="margin:0 0 10px 0; line-height: 1.4; color: white;">YouTube
-                            Channel Creation & Monetization</h3>
+                        <h3 data-key="tut-1-title" style="margin:0 0 10px 0; line-height: 1.4; color: white;">
+                            YouTube Channel Creation & Monetization
+                        </h3>
                         <p data-key="watch-telegram" style="color: var(--primary-color); font-size: 0.9rem; margin:0;">
-                            Telegram တွင် ကြည့်ရှုရန် →</p>
+                            Telegram တွင် ကြည့်ရှုရန် →
+                        </p>
                     </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="coffee-card">
+                    <img src="assets/logos/tutorials/coffee.jpg" alt="Support">
+                    <p data-key="coffee-text"
+                        style="font-size: 1rem; color: #ffffff; font-weight: bold; line-height: 1.6; margin:0;">
+                        နည်းပညာဗဟုသုတများ ဆက်လက်မျှဝေနိုင်ဖို့ ကော်ဖီလေးတိုက်ပါလား
+                    </p>
+                    <button class="btn-kpay" onclick="openModal()" data-key="btn-kpay">KPay ဖြင့် အားပေးရန်</button>
                 </div>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="coffee-card">
-                <img src="assets/logos/tutorials/coffee.jpg" alt="Support">
-                <p data-key="coffee-text"
-                    style="font-size: 1rem; color: #ffffff; font-weight: bold; line-height: 1.6; margin:0;">
-                    နည်းပညာဗဟုသုတများ ဆက်လက်မျှဝေနိုင်ဖို့ ကော်ဖီလေးတိုက်ပါလား
+        <div id="kpayModal" class="modal">
+            <div
+                style="background:var(--card-bg); padding:30px; border-radius:15px; width:320px; text-align:center; position:relative; border:1px solid var(--primary-color); margin: 100px auto;">
+                <span style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:24px; color: white;"
+                    onclick="closeModal()">&times;</span>
+                <h3 data-key="kpay-modal-title">KPay Support</h3>
+                <img src="assets/logos/tutorials/kpay-qr.jpg" alt="QR"
+                    style="width:100%; border-radius:10px; margin:15px 0;">
+                <p><strong>Name: Aung Kyaw San ph - xxxxxxx3871</strong></p>
+                <p data-key="kpay-warning" style="font-size:0.8rem; color:#ef4444;">*ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ*
                 </p>
-                <button class="btn-kpay" onclick="openModal()" data-key="btn-kpay">KPay ဖြင့် အားပေးရန်</button>
             </div>
         </div>
-    </div>
 
-    <div id="kpayModal" class="modal">
-        <div
-            style="background:var(--card-bg); padding:30px; border-radius:15px; width:320px; text-align:center; position:relative; border:1px solid var(--primary-color); margin: 100px auto;">
-            <span style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:24px; color: white;"
-                onclick="closeModal()">&times;</span>
-            <h3 data-key="kpay-modal-title">KPay Support</h3>
-            <img src="assets/logos/tutorials/kpay-qr.jpg" alt="QR"
-                style="width:100%; border-radius:10px; margin:15px 0;">
-            <p><strong>Name: Aung Kyaw San ph - xxxxxxx3871</strong></p>
-            <p data-key="kpay-warning" style="font-size:0.8rem; color:#ef4444;">*ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ*</p>
-        </div>
-    </div>
+        <script src="script.js"></script>
+        <script>
+            function openModal() { document.getElementById("kpayModal").style.display = "flex"; }
+            function closeModal() { document.getElementById("kpayModal").style.display = "none"; }
 
-    <script src="script.js"></script>
-    <script>
-        function openModal() { document.getElementById("kpayModal").style.display = "flex"; }
-        function closeModal() { document.getElementById("kpayModal").style.display = "none"; }
-
-        // Modal အပြင်ဘက်ကိုနှိပ်ရင် ပိတ်ရန်
-        window.onclick = function (event) {
-            let modal = document.getElementById("kpayModal");
-            if (event.target == modal) { modal.style.display = "none"; }
-        }
-    </script>
+            // Modal အပြင်ဘက်ကိုနှိပ်ရင် ပိတ်ရန်
+            window.onclick = function (event) {
+                let modal = document.getElementById("kpayModal");
+                if (event.target == modal) { modal.style.display = "none"; }
+            }
+        </script>
 </body>
 
 </html>
