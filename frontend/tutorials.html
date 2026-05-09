@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials | AI & Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #38bdf8;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-gray: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding-top: 100px;
+        }
+
+        /* Navbar Layout */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(15, 23, 42, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .main-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .tutorials-container {
+            flex: 1;
+        }
+
+        /* Back Link - SVG ပါဝင်ပြီးသားမို့လို့ ရိုးရိုးပဲထားလိုက်ပါပြီ */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Tutorial Grid & Cards */
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .tutorial-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: 0.3s ease;
+            cursor: pointer !important;
+        }
+
+        .tutorial-card * {
+            cursor: pointer !important;
+        }
+
+        .tutorial-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+        }
+
+        .tutorial-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Sidebar & Coffee Support */
+        .sidebar {
+            width: 350px;
+            position: sticky;
+            top: 110px;
+            height: fit-content;
+        }
+
+        .coffee-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .coffee-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .btn-kpay {
+            background: #ffdd00;
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        @media (max-width: 1100px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .tutorial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* အခု ဒီအောက်မှာ ဒါလေးကို ကူးထည့်ပါ */
+        #kpayModal img {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+            /* ပုံပေါ် mouse တင်ရင်တောင် ဘာမှလုပ်မရတော့အောင် ဒါက အဓိကပဲ */
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Agency Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & Digital</span>
+                <span class="brand-tagline">Solutions</span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" data-key="nav-services">Our Services</a></li>
+            <li><a href="index.html#portfolio" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="index.html#contact" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-extras">
+            <a href="#" class="btn-login" data-key="btn-login">Login</a>
+            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <div class="tutorials-container">
+
+            <a href="services.html" class="back-link" data-key="back-to-services">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 10px;">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်</span>
+            </a>
+
+            <div class="header-section">
+                <h1 data-key="tutorials-title" style="font-size: 2.2rem; font-weight: bold; margin: 30px 0 40px 0;">
+                    သင်ခန်းစာအကြောင်းအရာများ</h1>
+            </div>
+
+            <div class="tutorial-grid">
+                <div class="tutorial-card" onclick="window.location.href='https://t.me/c/3621711904/2'">
+                    <img src="assets/logos/tutorials/youtube-monetization.jpg" alt="YouTube">
+                    <div class="card-body">
+                        <h3 data-key="tut-1-title" style="margin:0 0 10px 0; line-height: 1.4; color: white;">YouTube
+                            Channel Creation & Monetization</h3>
+                        <p data-key="watch-telegram" style="color: var(--primary-color); font-size: 0.9rem; margin:0;">
+                            Telegram တွင် ကြည့်ရှုရန် →</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="coffee-card">
+                <img src="assets/logos/tutorials/coffee.jpg" alt="Support">
+                <p data-key="coffee-text"
+                    style="font-size: 1rem; color: #ffffff; font-weight: bold; line-height: 1.6; margin:0;">
+                    နည်းပညာဗဟုသုတများ ဆက်လက်မျှဝေနိုင်ဖို့ ကော်ဖီလေးတိုက်ပါလား
+                </p>
+                <button class="btn-kpay" onclick="openModal()" data-key="btn-kpay">KPay ဖြင့် အားပေးရန်</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="kpayModal" class="modal">
+        <div
+            style="background:var(--card-bg); padding:30px; border-radius:15px; width:320px; text-align:center; position:relative; border:1px solid var(--primary-color); margin: 100px auto;">
+            <span style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:24px; color: white;"
+                onclick="closeModal()">&times;</span>
+            <h3 data-key="kpay-modal-title">KPay Support</h3>
+            <img src="assets/logos/tutorials/kpay-qr.jpg" alt="QR"
+                style="width:100%; border-radius:10px; margin:15px 0;">
+            <p><strong>Name: Aung Kyaw San ph - xxxxxxx3871</strong></p>
+            <p data-key="kpay-warning" style="font-size:0.8rem; color:#ef4444;">*ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ*</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function openModal() { document.getElementById("kpayModal").style.display = "flex"; }
+        function closeModal() { document.getElementById("kpayModal").style.display = "none"; }
+
+        // Modal အပြင်ဘက်ကိုနှိပ်ရင် ပိတ်ရန်
+        window.onclick = function (event) {
+            let modal = document.getElementById("kpayModal");
+            if (event.target == modal) { modal.style.display = "none"; }
+        }
+    </script>
+</body>
+
+</html>

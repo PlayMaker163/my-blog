@@ -22,6 +22,21 @@ const translations = {
         'service-4-desc': 'User-friendly mobile applications for both Android and iOS platforms.',
         'service-5-title': 'AI Agent & Automation',
         'service-5-desc': 'Automate repetitive tasks with intelligent AI agents to improve workplace efficiency.',
+        "back-to-services": "Back to Services",
+        "tutorials-title": "Tutorials & Digital Content",
+        "tutorials-desc": "Learn programming and AI automation through our exclusive video tutorials.",
+        "tut-1-title": "YouTube Channel Creation & Monetization",
+        "watch-telegram": "Watch on Telegram →",
+        "coffee-title": "Buy Me a Coffee",
+        "coffee-desc": "You can support us by buying a coffee to keep the tutorials coming.",
+        "btn-kpay": "Support with KPay",
+        "kpay-modal-title": "KPay Support",
+        "kpay-warning": "*Please check the name before transferring",
+
+        // Service 6 အသစ် (Tutorial Section)
+        'service-6-title': 'Tutorials & Digital Content',
+        'service-6-desc': 'Learn programming and AI automation through our exclusive video tutorials.',
+        'btn-tutorial': 'Watch Now',
 
         // About Us Section
         'about-sub-title': 'About Us',
@@ -70,7 +85,8 @@ const translations = {
         'btn-contact': 'ဆက်သွယ်ရန်',
         'services-main-title': 'ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ',
         'service-1-title': 'AI Chatbot ဖန်တီးခြင်း',
-        'service-1-desc': 'လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးမည့် Smart AI Bot များ ဖန်တီးပေးခြင်း။', 'service-2-title': 'လုပ်ငန်းသုံး Software များ',
+        'service-1-desc': 'လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးမည့် Smart AI Bot များ ဖန်တီးပေးခြင်း။',
+        'service-2-title': 'လုပ်ငန်းသုံး Software များ',
         'service-2-desc': 'လုပ်ငန်းသုံး Software အမျိုးမျိုး ရေးသားပေးခြင်း။',
         'service-3-title': 'Website ဖန်တီးခြင်း',
         'service-3-desc': 'FastAPI နှင့် ခေတ်မီနည်းပညာများ သုံးထားသည့် မြန်ဆန်လှပသော Website များ ဖန်တီးပေးခြင်း။',
@@ -78,6 +94,19 @@ const translations = {
         'service-4-desc': 'Android နှင့် iOS ဖုန်းများတွင် အသုံးပြုနိုင်မည့် Mobile Application များ ဖန်တီးပေးခြင်း။',
         'service-5-title': 'AI Agent နှင့် လုပ်ငန်းအလိုအလျောက်စနစ်',
         'service-5-desc': 'လုပ်ငန်းခွင်အလုပ်များကို AI အသုံးပြု၍ အလိုအလျောက် (Auto) လုပ်ဆောင်ပေးမည့်စနစ်များ။',
+        "back-to-services": "ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်",
+        "tutorials-title": "သင်ခန်းစာအကြောင်းအရာများ",
+        "tut-1-title": "YouTube ချန်နယ်ဖန်တီးခြင်းနှင့် ငွေရှာခြင်း",
+        "watch-telegram": "Telegram တွင် ကြည့်ရှုရန် →",
+        "coffee-desc": "နည်းပညာဗဟုသုတများ ဆက်လက်မျှဝေနိုင်ဖို့ ကော်ဖီတစ်ခွက်လောက်တိုက်မယ်ဆိုရင် အရမ်းဝမ်းသာနေမှာပါ",
+        "btn-kpay": "KPay ဖြင့် အားပေးရန်",
+        "kpay-modal-title": "KPay ဖြင့် ပံ့ပိုးရန်",
+        "kpay-warning": "*ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ*",
+
+        // Service 6 အသစ် (Tutorial Section)
+        'service-6-title': 'နည်းပညာသင်ခန်းစာများနှင့် ဗီဒီယိုများ',
+        'service-6-desc': 'ပရိုဂရမ်မင်းနှင့် AI အလိုအလျောက်စနစ်များကို ကျွန်ုပ်တို့၏ သီးသန့်ဗီဒီယိုသင်ခန်းစာများမှတစ်ဆင့် လေ့လာပါ။',
+        'btn-tutorial': 'ကြည့်ရှုရန်',
 
         // About Us Section
         'about-sub-title': 'ကျွန်ုပ်တို့အကြောင်း',
@@ -119,7 +148,6 @@ function updateContent(lang) {
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (translations[lang] && translations[lang][key]) {
-            // .innerHTML သုံးထားသဖြင့် <br> အလုပ်လုပ်မည်ဖြစ်သည်
             el.innerHTML = translations[lang][key];
         }
     });
@@ -135,7 +163,6 @@ function setActiveNavLink() {
     const navLinks = document.querySelectorAll('.nav-links li a');
 
     navLinks.forEach(link => {
-        // href နာမည်နှင့် လက်ရှိဖိုင်နာမည် တူပါက 'active' class ထည့်သည်
         if (link.getAttribute('href') === currentLocation) {
             link.classList.add('active');
         } else {
@@ -171,17 +198,44 @@ if (themeToggle) {
 
 // စာမျက်နှာ စဖွင့်လိုက်တိုင်း Theme၊ Language နှင့် Active Link ကို စစ်ဆေးခြင်း
 window.addEventListener('DOMContentLoaded', () => {
-    // Theme စစ်ဆေးခြင်း
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     if (themeIcon) {
         themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
-    // Language စစ်ဆေးခြင်း
     const savedLang = localStorage.getItem('selectedLang') || 'en';
     updateContent(savedLang);
 
-    // Active Link စစ်ဆေးခြင်း
     setActiveNavLink();
 });
+
+// ၃။ QR Code ပုံကို Save လုပ်ခြင်းမှ ကာကွယ်ပေးသည့် Logic
+function protectQRCode() {
+    const qrImage = document.querySelector('#kpayModal img');
+    if (qrImage) {
+        // Right-click ပိတ်ခြင်း
+        qrImage.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Mobile ဖုန်းများတွင် ဖိထားလျှင် ပေါ်လာသည့် Menu ကို ပိတ်ခြင်း
+        qrImage.style.pointerEvents = 'none';
+        qrImage.style.userSelect = 'none';
+    }
+}
+
+// Modal ပွင့်လာတိုင်း အပေါ်က function ကို ခေါ်ပေးရန်
+// မင်းရဲ့ tutorials.html ထဲက openModal() function ကို ဒီလိုလေး ပြင်ရေးပါ
+function openModal() {
+    const modal = document.getElementById("kpayModal");
+    if (modal) {
+        modal.style.display = "flex";
+        protectQRCode(); // ပုံကို ကာကွယ်တဲ့ function ကို ဒီမှာ လှမ်းခေါ်လိုက်တာ
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("kpayModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
