@@ -26,7 +26,7 @@ const translations = {
         // About Us Section
         'about-sub-title': 'About Us',
         'about-main-title': 'AI & Digital Solutions',
-        'about-desc': 'We are a team of dedicated developers and innovators committed to delivering high-quality software, mobile apps, and digital solutions.',
+        'about-desc': 'We are a team of dedicated developers and innovators committed to delivering high-quality software, mobile apps, and digital solutions.Our mission is to transform your business ideas into reality using cutting-edge technology.',
         'about-exp-num': '10+',
         'about-exp-text': 'Years Experience',
         'stat-projects': '100+',
@@ -70,7 +70,7 @@ const translations = {
         'btn-contact': 'ဆက်သွယ်ရန်',
         'services-main-title': 'ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ',
         'service-1-title': 'AI Chatbot ဖန်တီးခြင်း',
-        'service-1-desc': 'လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးမည့် Smart AI Bot များ ဖန်တီးပေးခြင်း။',
+        'service-1-desc': 'လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးမည့် Smart AI Bot များ ဖန်တီးပေးခြင်း။လူကြီးမင်းတို့၏ စီးပွားရေးလုပ်ငန်းများကို ခေတ်မီနည်းပညာများ အသုံးပြု၍ ပိုမိုတိုးတက်အောင် ကူညီဆောင်ရွက်ပေးရန်မှာ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်ဖြစ်ပါသည်။',
         'service-2-title': 'လုပ်ငန်းသုံး Software များ',
         'service-2-desc': 'လုပ်ငန်းသုံး Software အမျိုးမျိုး ရေးသားပေးခြင်း။',
         'service-3-title': 'Website ဖန်တီးခြင်း',
