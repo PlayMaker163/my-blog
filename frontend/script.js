@@ -1,6 +1,7 @@
 // --- (က) ဘာသာပြန်စာသားများ စုစည်းမှု ---
 const translations = {
     en: {
+        // Nav Bar
         "nav-home": "Home",
         "nav-about": "About Us",
         "nav-services": "Our Services",
@@ -9,25 +10,42 @@ const translations = {
         "btn-login": "Login",
         "btn-signup": "Sign Up",
         "btn-contact": "Contact Us",
-        "footer-location": "Myoma Market, Naypyidaw",
-        "footer-desc": "We help your business succeed using cutting-edge AI technology and digital services.",
-        "footer-quick-links": "Quick Links",
-        "footer-contact-title": "Contact Us",
-        // Contact Page သီးသန့်စာသားများ
-        "contact-form-title": "Send Us a Message",
-        "label-name": "Full Name",
-        "label-email": "Email Address",
-        "label-subject": "Subject",
-        "label-message": "Message",
-        "btn-send": "Send Message",
-        "contact-info-title": "Contact Information",
-        "info-address-label": "Address",
-        "info-phone-label": "Phone",
-        "info-email-label": "Email",
-        "contact-sub-title": "We are here to assist you!",
-        "contact-level-up": "Contact us now to level up your business! . . .",
 
-        // Services Page သီးသန့်စာသားများ (ယခုထပ်ဖြည့်ထားသော အပိုင်း)
+        // --- Home Page (Hero Section) --- 
+        "home-title": "Welcome to <br> AI & Digital Solutions",
+        "home-subtitle": "Empower your business with cutting-edge technology",
+        "btn-get-started": "Get Started",
+
+        // --- Stats Section --- 
+        "stat-projects": "70+",
+        "stat-projects-text": "Projects",
+        "stat-clients": "80+",
+        "stat-clients-text": "Clients",
+        "stat-exp": "7+",
+        "stat-exp-text": "Years Exp",
+
+        // --- About Us Page --- 
+        "about-exp-num": "10+",
+        "about-exp-text": "Years Experience",
+        "about-sub-title": "About Us",
+        "about-main-title": "AI & Digital Solutions",
+        "about-desc": "We are an organization creating high-quality software, mobile applications, and digital services. Our mission is to help your business grow using modern technology.",
+
+        // --- Team Section --- 
+        "team-sub-title": "TEAM",
+        "team-title": "Our Team Members",
+        "team-1-name": "DR.Hein Htun",
+        "team-1-role": "CEO",
+        "team-2-name": "MR.Thein Htike Swe",
+        "team-2-role": "Developer",
+        "team-3-name": "MR.Aung Kyaw San",
+        "team-3-role": "Developer",
+        "team-4-name": "DR.Naing Zaw Aung",
+        "team-4-role": "Software Engineer",
+        "team-5-name": "MR.Lwin Moe",
+        "team-5-role": "AI Specialist",
+
+        // --- Services Page ---
         "services-main-title": "Our Services",
         "service-1-title": "AI Chatbot Development",
         "service-1-desc": "Creating Smart AI Bots that provide 24/7 service for businesses.",
@@ -41,9 +59,30 @@ const translations = {
         "service-5-desc": "Systems that automate workflow using AI technology.",
         "service-6-title": "Tutorials & Digital Content",
         "service-6-desc": "Learn programming and AI automation through our exclusive video tutorials.",
-        "btn-tutorial": "Watch Now"
+        "btn-tutorial": "Watch Now",
+
+        // --- Contact Page ---
+        "contact-form-title": "Send Us a Message",
+        "label-name": "Full Name",
+        "label-email": "Email Address",
+        "label-subject": "Subject",
+        "label-message": "Message",
+        "btn-send": "Send Message",
+        "contact-info-title": "Contact Information",
+        "info-address-label": "Address",
+        "info-phone-label": "Phone",
+        "info-email-label": "Email",
+        "contact-sub-title": "We are here to assist you!",
+        "contact-level-up": "Contact us now to level up your business! . . .",
+
+        // --- Footer ---
+        "footer-location": "Myoma Market, Naypyidaw",
+        "footer-desc": "We help your business succeed using cutting-edge AI technology and digital services.",
+        "footer-quick-links": "Quick Links",
+        "footer-contact-title": "Contact Us"
     },
     mm: {
+        // Nav Bar
         "nav-home": "ပင်မစာမျက်နှာ",
         "nav-about": "ကျွန်ုပ်တို့အကြောင်း",
         "nav-services": "ဝန်ဆောင်မှုများ",
@@ -52,25 +91,42 @@ const translations = {
         "btn-login": "ဝင်ရန်",
         "btn-signup": "အသစ်ဖွင့်ရန်",
         "btn-contact": "ဆက်သွယ်ရန်",
-        "footer-location": "မြို့မဈေး၊ နေပြည်တော်",
-        "footer-desc": "ကျွန်ုပ်တို့သည် ခေတ်မီ AI နည်းပညာနှင့် ဒစ်ဂျစ်တယ်ဝန်ဆောင်မှုများကို အသုံးပြု၍ သင်၏လုပ်ငန်းကို အောင်မြင်အောင် ကူညီပေးပါသည်။",
-        "footer-quick-links": "လင့်ခ်များ",
-        "footer-contact-title": "ဆက်သွယ်ရန်",
-        // Contact Page သီးသန့်စာသားများ
-        "contact-form-title": "သတင်းစကားပေးပို့ရန်",
-        "label-name": "နာမည်အပြည့်အစုံ",
-        "label-email": "အီးမေးလ်လိပ်စာ",
-        "label-subject": "အကြောင်းအရာ",
-        "label-message": "ပေးပို့လိုသောစာ",
-        "btn-send": "ပေးပို့မည်",
-        "contact-info-title": "ဆက်သွယ်ရန် အချက်အလက်",
-        "info-address-label": "လိပ်စာ",
-        "info-phone-label": "ဖုန်းနံပါတ်",
-        "info-email-label": "အီးမေးလ်",
-        "contact-sub-title": "ကျွန်ုပ်တို့က သင့်ကို ကူညီဖို့ ဒီမှာ ရှိနေပါတယ်",
-        "contact-level-up": "သင်၏ စီးပွားရေးကို အဆင့်မြှင့်တင်ဖို့ အခုပဲ ကျွန်ုပ်တို့ကို ဆက်သွယ်လိုက်ပါ . . .",
 
-        // Services Page သီးသန့်စာသားများ (ယခုထပ်ဖြည့်ထားသော အပိုင်း)
+        // --- Home Page (Hero Section) ---
+        "home-title": "AI & Digital Solutions မှ <br> ကြိုဆိုပါတယ်",
+        "home-subtitle": "ခေတ်မီနည်းပညာများဖြင့် သင်၏စီးပွားရေးကို အဆင့်မြှင့်တင်လိုက်ပါ။",
+        "btn-get-started": "စတင်မည်",
+
+        // --- Stats Section --- 
+        "stat-projects": "၇၀+",
+        "stat-projects-text": "ပရောဂျက်များ",
+        "stat-clients": "၈၀+",
+        "stat-clients-text": "ဖောက်သည်များ",
+        "stat-exp": "၇+",
+        "stat-exp-text": "နှစ် အတွေ့အကြုံ",
+
+        // --- About Us Page ---
+        "about-exp-num": "၁၀+",
+        "about-exp-text": "နှစ် အတွေ့အကြုံ",
+        "about-sub-title": "ကျွန်ုပ်တို့အကြောင်း",
+        "about-main-title": "AI & Digital Solutions",
+        "about-desc": "ကျွန်ုပ်တို့သည် အရည်အသွေးမြင့် ဆော့ဖ်ဝဲလ်များ၊ မိုဘိုင်းအက်ပလီကေးရှင်းများနှင့် ဒစ်ဂျစ်တယ်ဝန်ဆောင်မှုများကို ဖန်တီးပေးနေသော အဖွဲ့အစည်းဖြစ်ပါသည်။ ခေတ်မီနည်းပညာများကို အသုံးပြု၍ သင်၏စီးပွားရေးလုပ်ငန်း တိုးတက်အောင် ကူညီပေးရန်မှာ ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်ဖြစ်ပါသည်။",
+
+        // --- Team Section --- 
+        "team-sub-title": "အဖွဲ့",
+        "team-title": "ကျွန်ုပ်တို့၏ အဖွဲ့ဝင်များ",
+        "team-1-name": "DR.Hein Htun",
+        "team-1-role": "CEO",
+        "team-2-name": "MR.Thein Htike Swe",
+        "team-2-role": "Developer",
+        "team-3-name": "MR.Aung Kyaw San",
+        "team-3-role": "Developer",
+        "team-4-name": "DR.Naing Zaw Aung",
+        "team-4-role": "Software Engineer",
+        "team-5-name": "MR.Lwin Moe",
+        "team-5-role": "AI Specialist",
+
+        // --- Services Page ---
         "services-main-title": "ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ",
         "service-1-title": "AI Chatbot ရေးဆွဲခြင်း",
         "service-1-desc": "စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးသော စမတ် AI Bot များ ဖန်တီးပေးခြင်း။",
@@ -84,7 +140,27 @@ const translations = {
         "service-5-desc": "AI နည်းပညာကို အသုံးပြု၍ လုပ်ငန်းစဉ်များကို အလိုအလျောက် လုပ်ဆောင်ပေးသော စနစ်များ။",
         "service-6-title": "သင်ခန်းစာများနှင့် ဒစ်ဂျစ်တယ် အကြောင်းအရာ",
         "service-6-desc": "ကျွန်ုပ်တို့၏ သီးသန့်ဗီဒီယို သင်ခန်းစာများမှတဆင့် programming နှင့် AI automation ကို လေ့လာပါ။",
-        "btn-tutorial": "ယခုကြည့်ရှုမည်"
+        "btn-tutorial": "ယခုကြည့်ရှုမည်",
+
+        // --- Contact Page ---
+        "contact-form-title": "သတင်းစကားပေးပို့ရန်",
+        "label-name": "နာမည်အပြည့်အစုံ",
+        "label-email": "အီးမေးလ်လိပ်စာ",
+        "label-subject": "အကြောင်းအရာ",
+        "label-message": "ပေးပို့လိုသောစာ",
+        "btn-send": "ပေးပို့မည်",
+        "contact-info-title": "ဆက်သွယ်ရန် အချက်အလက်",
+        "info-address-label": "လိပ်စာ",
+        "info-phone-label": "ဖုန်းနံပါတ်",
+        "info-email-label": "အီးမေးလ်",
+        "contact-sub-title": "ကျွန်ုပ်တို့က သင့်ကို ကူညီဖို့ ဒီမှာ ရှိနေပါတယ်",
+        "contact-level-up": "သင်၏ စီးပွားရေးကို အဆင့်မြှင့်တင်ဖို့ အခုပဲ ကျွန်ုပ်တို့ကို ဆက်သွယ်လိုက်ပါ . . .",
+
+        // --- Footer ---
+        "footer-location": "မြို့မဈေး၊ နေပြည်တော်",
+        "footer-desc": "ကျွန်ုပ်တို့သည် ခေတ်မီ AI နည်းပညာနှင့် ဒစ်ဂျစ်တယ်ဝန်ဆောင်မှုများကို အသုံးပြု၍ သင်၏လုပ်ငန်းကို အောင်မြင်အောင် ကူညီပေးပါသည်။",
+        "footer-quick-links": "လင့်ခ်များ",
+        "footer-contact-title": "ဆက်သွယ်ရန်"
     }
 };
 
@@ -110,7 +186,6 @@ function setActiveNavLink() {
     const navLinks = document.querySelectorAll('.nav-links li a');
 
     navLinks.forEach(link => {
-        // href မှာပါတဲ့ စာသားနဲ့ လက်ရှိ URL တူမတူ စစ်တာပါ
         if (link.getAttribute('href') === currentLocation) {
             link.classList.add('active');
         } else {
@@ -177,12 +252,11 @@ function protectQRCode() {
 }
 
 // Modal ပွင့်လာတိုင်း အပေါ်က function ကို ခေါ်ပေးရန်
-// မင်းရဲ့ tutorials.html ထဲက openModal() function ကို ဒီလိုလေး ပြင်ရေးပါ
 function openModal() {
     const modal = document.getElementById("kpayModal");
     if (modal) {
         modal.style.display = "flex";
-        protectQRCode(); // ပုံကို ကာကွယ်တဲ့ function ကို ဒီမှာ လှမ်းခေါ်လိုက်တာ
+        protectQRCode();
     }
 }
 
