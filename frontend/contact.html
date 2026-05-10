@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AI & Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body data-theme="dark">
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Agency Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & Digital</span>
+                <span class="brand-tagline">Solutions</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" data-key="nav-services">Our Services</a></li>
+            <li><a href="index.html#portfolio" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+        <div class="nav-extras">
+            <a href="#" class="btn-login" data-key="btn-login">Login</a>
+            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <section class="contact-page-container">
+        <div class="contact-header-text">
+            <h2 data-key="contact-sub-title">We are here to assist you!</h2>
+            <p data-key="contact-level-up">Let's level up your Business, Together . . .</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-form-section">
+                <h2 data-key="contact-form-title">Send Us a Message</h2>
+                <form id="contact-form">
+                    <div class="input-group">
+                        <label data-key="label-name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label data-key="label-email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label data-key="label-subject">Subject</label>
+                        <input type="text" id="subject" placeholder="What is this about?">
+                    </div>
+                    <div class="input-group">
+                        <label data-key="label-message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-key="btn-send">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info-section">
+                <h2 data-key="contact-info-title">Contact Information</h2>
+                <div class="info-cards">
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <h4 data-key="info-address-label">Address</h4>
+                            <p data-key="footer-location">Myoma Market, Naypyidaw</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4 data-key="info-phone-label">Phone</h4>
+                            <p>+95 9885383871</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4 data-key="info-email-label">Email</h4>
+                            <p>makerplay169@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15024.463282270903!2d96.1130678!3d19.7493064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c8948d3c267861%3A0x67396a32857e4e11!2sNaypyidaw!5e0!3m2!1sen!2smm!4v1700000000000"
+                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo">
+                    <span>AI & Digital Solutions</span>
+                </div>
+                <p data-key="footer-desc">We help your business succeed using cutting-edge AI technology and digital
+                    services.</p>
+            </div>
+            <div class="footer-links">
+                <h3 data-key="footer-quick-links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-key="nav-home">Home</a></li>
+                    <li><a href="about.html" data-key="nav-about">About Us</a></li>
+                    <li><a href="services.html" data-key="nav-services">Services</a></li>
+                    <li><a href="index.html#portfolio" data-key="nav-portfolio">Portfolio</a></li>
+                    <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-key="footer-contact-title">Contact Us</h3>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <span>aungsandar1410@gmail.com</span></div>
+                <div class="contact-item"><i class="fas fa-phone"></i> <span>+95 9885383871</span></div>
+                <div class="contact-item"><i class="fas fa-location-dot"></i><span data-key="footer-location">Myoma
+                        Market, Naypyidaw</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI & Digital Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
