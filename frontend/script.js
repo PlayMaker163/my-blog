@@ -47,8 +47,8 @@ const translations = {
 
         // --- Services Page ---
         "services-main-title": "Our Services",
-        "service-1-title": "AI Chatbot Development",
-        "service-1-desc": "Creating Smart AI Bots that provide 24/7 service for businesses.",
+        "service-1-title": "Premium Subscriptions & Payment Solutions",
+        "service-1-desc": "Easily subscribe to CapCut, Canva and global services without a credit card.",
         "service-2-title": "Custom Software Solutions",
         "service-2-desc": "Developing various types of business software.",
         "service-3-title": "Web Development",
@@ -81,13 +81,35 @@ const translations = {
         "btn-discuss": "Discuss Details →",
         "back-to-services": "Back to Services",
 
-        // Card စာသားများ (English)
+        // Web Card စာသားများ (English)
         "web-card-1": "We will create the best corporate website for your business to take its place in the digital world.",
         "web-card-2": "We will create the best e-commerce website for your online store to sell products.",
         "web-card-3": "We will build a professional hotel and booking system website for your business.",
         "web-card-4": "We will create an advanced Learning Management System for your education business.",
         "web-card-5": "We will create a stunning portfolio and personal website to showcase your work.",
         "web-card-6": "We will design high-converting marketing landing pages for your business.",
+
+        // Premiunm Card စာသားများ (English)
+        "premium-main-title": "Premium Subscriptions",
+        "capcut-promo-desc": "Special promotion for the first month.",
+        "capcut-monthly-desc": "Regular monthly subscription from the second month.",
+        "capcut-yearly-desc": "Full year subscription with advance payment.",
+        "canva-promo-desc": "Special promotion price for the first month.",
+        "canva-monthly-desc": "Regular monthly price starting from the second month.",
+        "canva-yearly-desc": "One-year subscription with advance payment.",
+        "outline-promo-desc": "Special promotion price for the first month.",
+        "outline-monthly-desc": "Regular monthly subscription fee.",
+        "outline-yearly-desc": "Full year subscription with advance payment.",
+        "midjourney-promo-desc": "Special promotion price for the first month.",
+        "midjourney-monthly-desc": "Regular monthly subscription fee starting from 2nd month.",
+        "midjourney-yearly-desc": "Full year subscription with advance payment.",
+        "btn-buy-now": "Buy Now",
+        "payment-title": "Payment Methods",
+        "payment-subtitle": "Please send screenshot to Telegram after payment",
+        "payment-warning": "* Please check the name carefully before transferring *",
+        "btn-notify-payment": "Notify Payment Made",
+        "btn-back-services": "Back to Services",
+
 
 
         // --- Footer ---
@@ -143,8 +165,8 @@ const translations = {
 
         // --- Services Page ---
         "services-main-title": "ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ",
-        "service-1-title": "AI Chatbot ရေးဆွဲခြင်း",
-        "service-1-desc": "စီးပွားရေးလုပ်ငန်းများအတွက် ၂၄ နာရီ ဝန်ဆောင်မှုပေးသော စမတ် AI Bot များ ဖန်တီးပေးခြင်း။",
+        "service-1-title": "Premium Subscriptions & Payment Solutions",
+        "service-1-desc": "CapCut, Canva နှင့် အခြား Premium ဝန်ဆောင်မှုများကို Credit Card မလိုဘဲ ဝယ်ယူနိုင်ပါသည်။",
         "service-2-title": "စိတ်ကြိုက် Software ရေးဆွဲခြင်း",
         "service-2-desc": "လုပ်ငန်းသုံး software အမျိုးမျိုးကို စိတ်ကြိုက်ရေးဆွဲပေးခြင်း။",
         "service-3-title": "Web Development",
@@ -183,6 +205,27 @@ const translations = {
         "web-card-4": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ပညာရေးနှင့် သင်တန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
         "web-card-5": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ရေးအကျဉ်းနှင့် ပြခန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
         "web-card-6": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အရောင်းမြှင့်တင်ရေး Landing Page ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+
+        // Premiunm Card စာသားများ (မြန်မာ)
+        "premium-main-title": "Premium ဝန်ဆောင်မှုများ",
+        "capcut-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
+        "capcut-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
+        "capcut-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
+        "canva-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
+        "canva-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
+        "canva-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
+        "outline-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
+        "outline-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
+        "outline-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
+        "midjourney-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
+        "midjourney-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
+        "midjourney-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
+        "btn-buy-now": "ဝယ်ယူရန်",
+        "payment-title": "ငွေပေးချေမှုနည်းလမ်းများ",
+        "payment-subtitle": "ငွေလွှဲပြီးပါက Telegram သို့ screenshot ပို့ပေးပါ",
+        "payment-warning": "* ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ *",
+        "btn-notify-payment": "ငွေလွှဲပြီးကြောင်း အကြောင်းကြားရန်",
+        "btn-back-services": "ဝန်ဆောင်မှု သို့ပြန်သွားရန်",
 
         // --- Footer ---
         "footer-location": "မြို့မဈေး၊ နေပြည်တော်",

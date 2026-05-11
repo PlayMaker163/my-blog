@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Subscriptions | AI & Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           1. PAGE SPECIFIC STYLING
+           ============================================================ */
+        body {
+            padding-top: 100px;
+            scroll-behavior: smooth;
+        }
+
+        .main-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .square-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        .square-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .square-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .square-card h3 {
+            color: var(--text-color);
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .square-card .desc {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .price-box {
+            background: rgba(0, 123, 255, 0.08);
+            padding: 12px;
+            border-radius: 12px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .promo-price {
+            color: #2ecc71;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .regular-price {
+            color: var(--primary-blue);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .btn-buy {
+            display: block;
+            margin-top: 12px;
+            padding: 8px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        #payment {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 80px auto;
+            backdrop-filter: blur(15px);
+        }
+
+        .kpay-qr {
+            width: 220px;
+            margin: 25px auto;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .kpay-qr img {
+            width: 100%;
+            height: auto;
+        }
+
+        .btn-confirm {
+            background: #FFD700;
+            color: #000;
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-confirm:hover {
+            transform: scale(1.05);
+            background: #f1cc00;
+        }
+
+        @media (max-width: 992px) {
+            .premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .premium-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Agency Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & Digital</span>
+                <span class="brand-tagline">Solutions</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" class="active" data-key="nav-services">Our Services</a></li>
+            <li><a href="#" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+        <div class="nav-extras">
+            <a href="#" class="btn-login" data-key="btn-login">Login</a>
+            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <a href="services.html"
+            style="color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 30px; font-weight: 600;">
+            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> <span data-key="btn-back-services">Back to
+                Services</span>
+        </a>
+
+        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2rem;" data-key="premium-main-title">Premium
+            Subscriptions</h2>
+
+        <!-- =======================Card Grid Section======================== -->
+
+        <div class="premium-grid">
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/capcut.jpeg" alt="CapCut">
+                <h3>CapCut (Promo)</h3>
+                <p class="desc" data-key="capcut-promo-desc">ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။</p>
+                <div class="price-box">
+                    <div class="promo-price">၁၀,၀၀၀ ကျပ်</div>
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">(First Month Only)</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/capcut.jpeg" alt="CapCut">
+                <h3>CapCut (Monthly)</h3>
+                <p class="desc" data-key="capcut-monthly-desc">ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။</p>
+                <div class="price-box">
+                    <div class="regular-price">၅၀,၀၀၀ ကျပ် / လ</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/capcut.jpeg" alt="CapCut">
+                <h3>CapCut (Yearly)</h3>
+                <p class="desc" data-key="capcut-yearly-desc">တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။</p>
+                <div class="price-box">
+                    <div class="regular-price">၂၅၀,၀၀၀ ကျပ် / နှစ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/canva.png" alt="Canva">
+                <h3>Canva Pro (Promo)</h3>
+                <p class="desc" data-key="canva-promo-desc">ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။</p>
+                <div class="price-box">
+                    <div class="promo-price">Pro Plan - ၈၀,၀၀၀ ကျပ်</div>
+                    <div class="promo-price" style="margin-top: 5px;">Business Plan - ၁၁၀,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/canva.png" alt="Canva">
+                <h3>Canva Pro (Monthly)</h3>
+                <p class="desc" data-key="canva-monthly-desc">ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။</p>
+                <div class="price-box">
+                    <div class="regular-price">Pro Plan - ၉၀,၀၀၀ ကျပ်</div>
+                    <div class="regular-price" style="margin-top: 5px;">Business Plan - ၁၂၀,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/canva.png" alt="Canva">
+                <h3>Canva Pro (Yearly)</h3>
+                <p class="desc" data-key="canva-yearly-desc">တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။</p>
+                <div class="price-box">
+                    <div class="regular-price">Pro Plan - ၈၀၀,၀၀၀ ကျပ်</div>
+                    <div class="regular-price" style="margin-top: 5px;">Business Plan - ၁,၂၀၀,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+            <div class="square-card">
+                <img src="assets/logos/premium_services/outline.png" alt="Outline">
+                <h3>Outline Vpn(Promo)</h3>
+                <p class="desc" data-key="outline-promo-desc">ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။</p>
+                <div class="price-box">
+                    <div class="promo-price">၁၀,၀၀၀ ကျပ်</div>
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">(First Month Only)</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/outline.png" alt="Outline">
+                <h3>Outline Vpn(Monthly)</h3>
+                <p class="desc" data-key="outline-monthly-desc">ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။</p>
+                <div class="price-box">
+                    <div class="regular-price">၅၀,၀၀၀ ကျပ် / လ</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/outline.png" alt="Outline">
+                <h3>Outline Vpn(Yearly)</h3>
+                <p class="desc" data-key="outline-yearly-desc">တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။</p>
+                <div class="price-box">
+                    <div class="regular-price">၂၅၀,၀၀၀ ကျပ် / နှစ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/midjourney.png" alt="Midjourney">
+                <h3>Midjourney (Promo)</h3>
+                <p class="desc" data-key="midjourney-promo-desc">ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။</p>
+                <div class="price-box">
+                    <div class="promo-price">Basic Plan- ၄၅,၀၀၀ ကျပ်</div>
+                    <div class="promo-price" style="margin-top: 5px;">Standard Plan- ၁၂၀,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/midjourney.png" alt="Midjourney">
+                <h3>Midjourney (Monthly)</h3>
+                <p class="desc" data-key="midjourney-monthly-desc">ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။</p>
+                <div class="price-box">
+                    <div class="regular-price">Basic Plan- ၅၀,၀၀၀ ကျပ်</div>
+                    <div class="regular-price" style="margin-top: 5px;">Standard Plan- ၁၂၅,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+            <div class="square-card">
+                <img src="assets/logos/premium_services/midjourney.png" alt="Midjourney">
+                <h3>Midjourney (Yearly)</h3>
+                <p class="desc" data-key="midjourney-yearly-desc">တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။</p>
+                <div class="price-box">
+                    <div class="regular-price">Basic Plan- ၅၀၀,၀၀၀ ကျပ်</div>
+                    <div class="regular-price" style="margin-top: 5px;">Standard Plan- ၁,၃၅၀,၀၀၀ ကျပ်</div>
+                    <a href="#payment" class="btn-buy" data-key="btn-buy-now">ဝယ်ယူရန်</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- =========payment Section=========== -->
+
+        <div id="payment">
+            <h3 style="color: var(--text-color); font-size: 1.5rem;" data-key="payment-title">Payment Methods</h3>
+            <p style="color: var(--text-dim); margin-top: 10px;" data-key="payment-subtitle">ငွေလွှဲပြီးပါက Telegram
+                သို့ screenshot ပို့ပေးပါ</p>
+
+            <div class="kpay-qr">
+                <img src="assets/kpay-qr.jpg" alt="KPay QR">
+            </div>
+
+            <div style="color: var(--text-color); font-weight: 800; font-size: 1.1rem;">
+                <p style="color: var(--primary-blue);">KPay - 09 885383871</p>
+                <p>(Aung Kyaw San)</p>
+                <p style="color: #ff4757; font-size: 0.85rem; margin-top: 5px; font-weight: 700;"
+                    data-key="payment-warning">
+                    * ငွေမလွှဲခင် နာမည်ကို သေချာစစ်ဆေးပါ *
+                </p>
+            </div>
+
+            <a href="https://t.me/+bYNHep2UXCEyNzc1" class="btn-confirm" target="_blank">
+                <i class="fab fa-telegram-plane" style="margin-right: 8px;"></i> <span
+                    data-key="btn-notify-payment">ငွေလွှဲပြီးကြောင်း အကြောင်းကြားရန်</span>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo">
+                    <span>AI & Digital Solutions</span>
+                </div>
+                <p data-key="footer-desc">ကျွန်ုပ်တို့သည် ခေတ်မီဆန်းသစ်သော AI နည်းပညာများနှင့် Digital
+                    ဝန်ဆောင်မှုများကို အသုံးပြု၍ သင့်လုပ်ငန်းများကို အကောင်းဆုံး ကူညီဆောင်ရွက်ပေးနေပါသည်။</p>
+            </div>
+            <div class="footer-links">
+                <h3 data-key="footer-quick-links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-key="nav-home">Home</a></li>
+                    <li><a href="about.html" data-key="nav-about">About Us</a></li>
+                    <li><a href="services.html" data-key="nav-services">Services</a></li>
+                    <li><a href="#" data-key="nav-portfolio">Portfolio</a></li>
+                    <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-key="footer-contact-title">Contact Us</h3>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <span>makerplay169@gmail.com</span></div>
+                <div class="contact-item"><i class="fas fa-phone"></i> <span>+95 9885383871</span></div>
+                <div class="contact-item"><i class="fas fa-location-dot"></i> <span data-key="footer-location">Myoma
+                        Market, Naypyidaw</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI & Digital Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
