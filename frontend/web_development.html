@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Services | AI & Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Web Development Page အတွက် Layout Specific CSS */
+        body {
+            padding-top: 100px;
+        }
+
+        .main-wrapper {
+            /* ဒီတန်ဖိုးကို 1300px သို့မဟုတ် 1400px လို့ ပြောင်းကြည့်ပါ */
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* ၃ ကတ် ၁ တန်း ပုံစံ Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            margin: 0 0 10px 0;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .card-body p {
+            color: var(--text-dim);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn {
+            margin-top: auto;
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & Digital</span>
+                <span class="brand-tagline">Solutions</span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" class="active" data-key="nav-services">Our Services</a></li>
+            <li><a href="index.html#portfolio" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="index.html#contact" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-extras">
+            <a href="#" class="btn-login" data-key="btn-login">Login</a>
+            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <a href="services.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" style="margin-right: 10px;">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span data-key="back-to-services">ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်</span>
+        </a>
+
+        <p data-key="web-dev-subtitle"
+            style="text-align: center; color: var(--text-dim); margin: 10px 0 50px 0; font-size: 1.5rem; font-weight: 700;">
+            ခေတ်မီနည်းပညာများကို အသုံးပြု၍ လှပသော ဝဘ်ဆိုဒ်များကို ဖန်တီးပေးခြင်း
+        </p>
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_business.jpg" alt="Business Website">
+                <div class="card-body">
+                    <h3>Corporate / Business Website</h3>
+                    <p data-key="web-card-1">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ပိုင်လုပ်ငန်းသုံး
+                        Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_ecommerce.jpg" alt="E-commerce Website">
+                <div class="card-body">
+                    <h3>E-commerce Website</h3>
+                    <p data-key="web-card-2">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အွန်လိုင်းအရောင်းဆိုင်
+                        Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_booking.jpg" alt="Booking Website">
+                <div class="card-body">
+                    <h3>Hotel & Booking Website</h3>
+                    <p data-key="web-card-3">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ဟိုတယ်နှင့် ဘိုကင်စနစ်
+                        Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_education.png" alt="Education Website">
+                <div class="card-body">
+                    <h3>Learning Management System</h3>
+                    <p data-key="web-card-4">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ပညာရေးနှင့် သင်တန်း
+                        Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_portfolio.jpg" alt="Portfolio Website">
+                <div class="card-body">
+                    <h3>Portfolio & Personal Website</h3>
+                    <p data-key="web-card-5">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ရေးအကျဉ်းနှင့်
+                        ပြခန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="assets/logos/web_services/service_landing.png" alt="Landing Page">
+                <div class="card-body">
+                    <h3>Marketing Landing Page</h3>
+                    <p data-key="web-card-6">သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အရောင်းမြှင့်တင်ရေး
+                        Landing Page ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။</p>
+                    <div class="contact-btn" data-key="btn-discuss" onclick="window.location.href='contact.html'"
+                        style="cursor: pointer;">
+                        အသေးစိတ် ဆွေးနွေးရန် →
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

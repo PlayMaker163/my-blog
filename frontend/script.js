@@ -75,6 +75,21 @@ const translations = {
         "contact-sub-title": "We are here to assist you!",
         "contact-level-up": "Contact us now to level up your business! . . .",
 
+        // --- Web Development Page ---
+        "web-dev-title": "Web Development Services",
+        "web-dev-subtitle": "Creating beautiful websites using modern technologies",
+        "btn-discuss": "Discuss Details →",
+        "back-to-services": "Back to Services",
+
+        // Card စာသားများ (English)
+        "web-card-1": "We will create the best corporate website for your business to take its place in the digital world.",
+        "web-card-2": "We will create the best e-commerce website for your online store to sell products.",
+        "web-card-3": "We will build a professional hotel and booking system website for your business.",
+        "web-card-4": "We will create an advanced Learning Management System for your education business.",
+        "web-card-5": "We will create a stunning portfolio and personal website to showcase your work.",
+        "web-card-6": "We will design high-converting marketing landing pages for your business.",
+
+
         // --- Footer ---
         "footer-location": "Myoma Market, Naypyidaw",
         "footer-desc": "We help your business succeed using cutting-edge AI technology and digital services.",
@@ -155,6 +170,19 @@ const translations = {
         "info-email-label": "အီးမေးလ်",
         "contact-sub-title": "ကျွန်ုပ်တို့က သင့်ကို ကူညီဖို့ ဒီမှာ ရှိနေပါတယ်",
         "contact-level-up": "သင်၏ စီးပွားရေးကို အဆင့်မြှင့်တင်ဖို့ အခုပဲ ကျွန်ုပ်တို့ကို ဆက်သွယ်လိုက်ပါ . . .",
+
+        // --- Web Development Page ---
+        "web-dev-title": "Web Development ဝန်ဆောင်မှုများ",
+        "web-dev-subtitle": "ခေတ်မီနည်းပညာများကို အသုံးပြု၍ လှပသော ဝဘ်ဆိုဒ်များကို ဖန်တီးပေးခြင်း",
+        "btn-discuss": "အသေးစိတ် ဆွေးနွေးရန် →",
+        "back-to-services": "ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်",
+        // Card စာသားများ (မြန်မာ)
+        "web-card-1": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ပိုင်လုပ်ငန်းသုံး Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+        "web-card-2": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အွန်လိုင်းအရောင်းဆိုင် Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+        "web-card-3": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ဟိုတယ်နှင့် ဘိုကင်စနစ် Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+        "web-card-4": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ပညာရေးနှင့် သင်တန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+        "web-card-5": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ရေးအကျဉ်းနှင့် ပြခန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
+        "web-card-6": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အရောင်းမြှင့်တင်ရေး Landing Page ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
 
         // --- Footer ---
         "footer-location": "မြို့မဈေး၊ နေပြည်တော်",
