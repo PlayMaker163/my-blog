@@ -57,7 +57,7 @@ const translations = {
         "service-4-desc": "Building mobile applications for both Android and iOS platforms.",
         "service-5-title": "AI Agent & Automation",
         "service-5-desc": "Systems that automate workflow using AI technology.",
-        "service-6-title": "Tutorials & Digital Content",
+        "service-6-title": "Tutorial Contents",
         "service-6-desc": "Learn programming and AI automation through our exclusive video tutorials.",
         "btn-tutorial": "Watch Now",
 
@@ -138,7 +138,7 @@ const translations = {
         "service-4-desc": "Android နှင့် iOS နှစ်မျိုးလုံးအတွက် မိုဘိုင်း application များ ရေးဆွဲပေးခြင်း။",
         "service-5-title": "AI Agent နှင့် Automation",
         "service-5-desc": "AI နည်းပညာကို အသုံးပြု၍ လုပ်ငန်းစဉ်များကို အလိုအလျောက် လုပ်ဆောင်ပေးသော စနစ်များ။",
-        "service-6-title": "သင်ခန်းစာများနှင့် ဒစ်ဂျစ်တယ် အကြောင်းအရာ",
+        "service-6-title": "သင်ခန်းစာ အကြောင်းအရာများ",
         "service-6-desc": "ကျွန်ုပ်တို့၏ သီးသန့်ဗီဒီယို သင်ခန်းစာများမှတဆင့် programming နှင့် AI automation ကို လေ့လာပါ။",
         "btn-tutorial": "ယခုကြည့်ရှုမည်",
 
