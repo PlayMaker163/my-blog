@@ -1,7 +1,7 @@
 // --- (က) ဘာသာပြန်စာသားများ စုစည်းမှု ---
 const translations = {
     en: {
-        // Nav Bar
+        // --- Nav Bar ---
         "nav-home": "Home",
         "nav-about": "About Us",
         "nav-services": "Our Services",
@@ -81,7 +81,7 @@ const translations = {
         "btn-discuss": "Discuss Details →",
         "back-to-services": "Back to Services",
 
-        // Web Card စာသားများ (English)
+        // --- Web Card စာသားများ ---
         "web-card-1": "We will create the best corporate website for your business to take its place in the digital world.",
         "web-card-2": "We will create the best e-commerce website for your online store to sell products.",
         "web-card-3": "We will build a professional hotel and booking system website for your business.",
@@ -89,7 +89,7 @@ const translations = {
         "web-card-5": "We will create a stunning portfolio and personal website to showcase your work.",
         "web-card-6": "We will design high-converting marketing landing pages for your business.",
 
-        // Premiunm Card စာသားများ (English)
+        // --- Premium Card စာသားများ ---
         "premium-main-title": "Premium Subscriptions",
         "capcut-promo-desc": "Special promotion for the first month.",
         "capcut-monthly-desc": "Regular monthly subscription from the second month.",
@@ -107,14 +107,30 @@ const translations = {
         "chatgpt-monthly-desc": "Regular monthly subscription fees.",
         "chatgpt-yearly-desc": "Advance payment for a full year.",
         "not-available": "Not available for all three plans yet.",
+        "zoom-promo-title": "Zoom Pro (Promo)",
+        "zoom-promo-desc": "Special promotion price for the first month.",
+        "zoom-monthly-title": "Zoom Pro (Monthly)",
+        "zoom-monthly-desc": "Regular monthly price starting from the second month.",
+        "zoom-yearly-title": "Zoom Pro (Yearly)",
+        "zoom-yearly-desc": "One-year subscription with advance payment.",
+
+        // --- AI Agent Card စာသားများ ---
+        "automation-main-title": "Custom AI Agents & Workflow Automation",
+        "automation-main-desc": "We build AI-driven systems to automate your business processes, saving time and significantly increasing efficiency through cutting-edge technology.",
+        "ai-card-1-title": "Customer Support Agent",
+        "ai-card-1-desc": "AI system that automatically responds to customer inquiries 24/7 like a human.",
+        "ai-card-2-title": "Sales & Lead Generation",
+        "ai-card-2-desc": "System that finds targeted customers and automatically records sales processes.",
+        "ai-card-3-title": "Data Entry Automation",
+        "ai-card-3-desc": "AI system that inputs complex data and spreadsheets accurately and quickly.",
+
+        // --- Payment စာသားများ ---
         "btn-buy-now": "Buy Now",
         "payment-title": "Payment Methods",
         "payment-subtitle": "Please send screenshot to Telegram after payment",
         "payment-warning": "* Please check the name carefully before transferring *",
         "btn-notify-payment": "Notify Payment Made",
         "btn-back-services": "Back to Services",
-
-
 
         // --- Footer ---
         "footer-location": "Myoma Market, Naypyidaw",
@@ -123,7 +139,7 @@ const translations = {
         "footer-contact-title": "Contact Us"
     },
     mm: {
-        // Nav Bar
+        // --- Nav Bar ---
         "nav-home": "ပင်မစာမျက်နှာ",
         "nav-about": "ကျွန်ုပ်တို့အကြောင်း",
         "nav-services": "ဝန်ဆောင်မှုများ",
@@ -202,7 +218,8 @@ const translations = {
         "web-dev-subtitle": "ခေတ်မီနည်းပညာများကို အသုံးပြု၍ လှပသော ဝဘ်ဆိုဒ်များကို ဖန်တီးပေးခြင်း",
         "btn-discuss": "အသေးစိတ် ဆွေးနွေးရန် →",
         "back-to-services": "ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်",
-        // Card စာသားများ (မြန်မာ)
+
+        // --- Web Card စာသားများ ---
         "web-card-1": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ပိုင်လုပ်ငန်းသုံး Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
         "web-card-2": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အွန်လိုင်းအရောင်းဆိုင် Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
         "web-card-3": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ဟိုတယ်နှင့် ဘိုကင်စနစ် Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
@@ -210,7 +227,7 @@ const translations = {
         "web-card-5": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ ကိုယ်ရေးအကျဉ်းနှင့် ပြခန်း Website ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
         "web-card-6": "သင့်လုပ်ငန်းကို ဒီဂျစ်တယ်ကမ္ဘာမှာ နေရာယူနိုင်ဖို့ အရောင်းမြှင့်တင်ရေး Landing Page ကို အကောင်းဆုံး ဖန်တီးပေးပါမည်။",
 
-        // Premiunm Card စာသားများ (မြန်မာ)
+        // --- Premium Card စာသားများ ---
         "premium-main-title": "Premium ဝန်ဆောင်မှုများ",
         "capcut-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
         "capcut-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
@@ -228,6 +245,24 @@ const translations = {
         "chatgpt-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေးများ။",
         "chatgpt-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
         "not-available": "Plan သုံးခုလုံးအတွက် မရရှိနိုင်သေးပါ",
+        "zoom-promo-title": "Zoom Pro (Promo)",
+        "zoom-promo-desc": "ပထမဆုံးလအတွက် အထူး Promotion ဈေးနှုန်း။",
+        "zoom-monthly-title": "Zoom Pro (Monthly)",
+        "zoom-monthly-desc": "ဒုတိယလမှစတင်၍ ပုံမှန်လစဉ်ကြေး။",
+        "zoom-yearly-title": "Zoom Pro (Yearly)",
+        "zoom-yearly-desc": "တစ်နှစ်စာလုံးအတွက် ကြိုတင်ပေးချေမှု။",
+
+        // --- AI Agent Card စာသားများ ---
+        "automation-main-title": "Custom AI Agents & Workflow Automation",
+        "automation-main-desc": "သင့်လုပ်ငန်း၏ နေ့စဉ်လုပ်ငန်းဆောင်တာများကို AI အသုံးပြု၍ အလိုအလျောက် (Automation) ပြုလုပ်ပေးခြင်းဖြင့် အချိန်ကုန်သက်သာစေပြီး ထိရောက်မှု (Efficiency) ကို အဆမတန် မြှင့်တင်ပေးနိုင်မည့် စနစ်များကို ဖန်တီးပေးပါသည်။",
+        "ai-card-1-title": "Customer Support Agent",
+        "ai-card-1-desc": "ဖောက်သည်များ၏ မေးမြန်းချက်များကို ၂၄ နာရီပတ်လုံး လူသားကဲ့သို့ အလိုအလျောက် တုံ့ပြန်ဖြေကြားပေးမည့် AI စနစ်။",
+        "ai-card-2-title": "Sales & Lead Generation",
+        "ai-card-2-desc": "အရောင်းလုပ်ငန်းစဉ်များတွင် ပစ်မှတ်ထားသော Customer များကို ရှာဖွေပေးပြီး အလိုအလျောက် မှတ်တမ်းတင်ပေးမည့် စနစ်။",
+        "ai-card-3-title": "Data Entry Automation",
+        "ai-card-3-desc": "ရှုပ်ထွေးသော အချက်အလက်များနှင့် စာရင်းဇယားများကို AI ဖြင့် တိကျမြန်ဆန်စွာ အလိုအလျောက် ရိုက်သွင်းပေးမည့် စနစ်။",
+
+        // --- Payment စာသားများ ---
         "btn-buy-now": "ဝယ်ယူရန်",
         "payment-title": "ငွေပေးချေမှုနည်းလမ်းများ",
         "payment-subtitle": "ငွေလွှဲပြီးပါက Telegram သို့ screenshot ပို့ပေးပါ",
