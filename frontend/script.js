@@ -163,7 +163,7 @@ const translations = {
         "nav-services": "ဝန်ဆောင်မှုများ",
         "nav-portfolio": "လုပ်ဆောင်ချက်များ",
         "nav-contact": "ဆက်သွယ်ရန်",
-        "btn-login": "ဝင်ရန်",
+        "btn-login": "အကာင့်ဝင်ရန်",
         "btn-signup": "အသစ်ဖွင့်ရန်",
         "btn-contact": "ဆက်သွယ်ရန်",
 
