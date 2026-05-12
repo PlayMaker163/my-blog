@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database & Cloud Solutions | AI & Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        .main-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* ၃ ကတ် ၁ တန်း ပုံစံ Grid */
+        /* ၃ ကတ် ၁ တန်း ပုံစံ Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+            align-items: stretch;
+            /* ကတ်အားလုံး အမြင့်ညီအောင် လုပ်ပေးသည် */
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            /* ကတ်အမြင့်ကို grid အတိုင်း အပြည့်ယူစေသည် */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 30px 20px;
+            /* padding ကို နည်းနည်း ပိုပေးလိုက်သည် */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            /* card body ကို card အိမ်အပြည့် နေရာယူစေသည် */
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .card-body h3 {
+            margin: 0 0 15px 0;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 1.4rem;
+        }
+
+        .card-body p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            /* စာသားတိုသည်ဖြစ်စေ ရှည်သည်ဖြစ်စေ ကျန်တဲ့နေရာလွတ်ကို ယူပြီး ခလုတ်ကို အောက်တွန်းပို့ပေးသည် */
+        }
+
+        /* အပြာရောင် Box Button */
+        .btn-contact-blue {
+            display: block;
+            /* block ပြောင်းလိုက်ရင် width ညှိရတာ ပိုလွယ်သည် */
+            width: fit-content;
+            margin: 0 auto;
+            /* ခလုတ်ကို အလယ်ပို့သည် */
+            background: #007bff;
+            color: #ffffff !important;
+            padding: 10px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: none;
+            margin-top: auto;
+            /* ခလုတ်ကို အမြဲတမ်း အောက်ဆုံးမှာ ကပ်နေစေသည် */
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-card {
+                aspect-ratio: auto;
+                min-height: 380px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Agency Logo" class="agency-logo-small">
+            <div class="logo-text">
+                <span class="brand-name">AI & Digital</span>
+                <span class="brand-tagline">Solutions</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-key="nav-home">Home</a></li>
+            <li><a href="about.html" data-key="nav-about">About Us</a></li>
+            <li><a href="services.html" class="active" data-key="nav-services">Our Services</a></li>
+            <li><a href="#" data-key="nav-portfolio">Our Portfolio</a></li>
+            <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+        </ul>
+        <div class="nav-extras">
+            <a href="#" class="btn-login" data-key="btn-login">Login</a>
+            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <select id="lang-switch">
+                    <option value="en">EN</option>
+                    <option value="mm">MM</option>
+                </select>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <a href="services.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" style="margin-right: 10px;">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span data-key="back-to-services">ဝန်ဆောင်မှုများသို့ ပြန်သွားရန်</span>
+        </a>
+
+        <p data-key="db-main-desc"
+            style="text-align: center; color: var(--text-dim); margin: 10px auto 40px auto; font-size: 1.5rem; max-width: 1000px; line-height: 1.6; font-weight: 700;">
+            We provide secure, scalable database architectures and cloud server deployments tailored to your business
+            operations.
+        </p>
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <div class="card-body">
+                    <i class="fas fa-cash-register card-icon"></i>
+                    <h3 data-key="db-card-1-title">POS & ERP Database Systems</h3>
+                    <p data-key="db-card-1-desc">Efficient and secure database structures designed specifically for
+                        Point of Sale and Enterprise Resource Planning software.</p>
+                    <a href="contact.html" class="btn-contact-blue" data-key="btn-contact">ဆက်သွယ်ရန်</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-body">
+                    <i class="fas fa-cloud card-icon"></i>
+                    <h3 data-key="db-card-2-title">Cloud Server Setup & Management</h3>
+                    <p data-key="db-card-2-desc">Setting up and maintaining reliable cloud infrastructures using modern
+                        platforms like AWS, Google Cloud, and DigitalOcean.</p>
+                    <a href="contact.html" class="btn-contact-blue" data-key="btn-contact">ဆက်သွယ်ရန်</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-body">
+                    <i class="fas fa-network-wired card-icon"></i>
+                    <h3 data-key="db-card-3-title">Custom Database Architecture</h3>
+                    <p data-key="db-card-3-desc">Designing customized, highly scalable database structures and APIs to
+                        manage complex business data securely.</p>
+                    <a href="contact.html" class="btn-contact-blue" data-key="btn-contact">ဆက်သွယ်ရန်</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer" style="margin-top: 80px;">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo">
+                    <span>AI & Digital Solutions</span>
+                </div>
+                <p data-key="footer-desc">We help your business succeed using cutting-edge AI technology and digital
+                    services.</p>
+            </div>
+            <div class="footer-links">
+                <h3 data-key="footer-quick-links">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-key="nav-home">Home</a></li>
+                    <li><a href="about.html" data-key="nav-about">About Us</a></li>
+                    <li><a href="services.html" data-key="nav-services">Services</a></li>
+                    <li><a href="#" data-key="nav-portfolio">Portfolio</a></li>
+                    <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-key="footer-contact-title">Contact Us</h3>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <span>makerplay169@gmail.com</span></div>
+                <div class="contact-item"><i class="fas fa-phone"></i> <span>+95 9885383871</span></div>
+                <div class="contact-item"><i class="fas fa-location-dot"></i><span data-key="footer-location">Myoma
+                        Market, Naypyidaw</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI & Digital Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

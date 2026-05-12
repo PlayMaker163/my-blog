@@ -53,8 +53,8 @@ const translations = {
         "service-2-desc": "Developing various types of business software.",
         "service-3-title": "Web Development",
         "service-3-desc": "Creating beautiful websites using modern technologies.",
-        "service-4-title": "Mobile App Development",
-        "service-4-desc": "Building mobile applications for both Android and iOS platforms.",
+        "service-4-title": "Database & Cloud Solutions",
+        "service-4-desc": "Reliable database architecture and cloud server setup for your business needs.",
         "service-5-title": "AI Agent & Automation",
         "service-5-desc": "Systems that automate workflow using AI technology.",
         "service-6-title": "Tutorial Contents",
@@ -124,6 +124,24 @@ const translations = {
         "ai-card-3-title": "Data Entry Automation",
         "ai-card-3-desc": "AI system that inputs complex data and spreadsheets accurately and quickly.",
 
+        // --- Database & Cloud Card စာသားများ ---
+        "db-main-desc": "We provide secure, scalable database architectures and cloud server deployments tailored to your business operations.",
+        "db-card-1-title": "POS & ERP Database Systems",
+        "db-card-1-desc": "Efficient and secure database structures designed specifically for Point of Sale and Enterprise Resource Planningsoftware",
+        "db-card-2-title": "Cloud Server Setup & Management",
+        "db-card-2-desc": "Setting up and maintaining reliable cloud infrastructures using modern platforms like AWS, Google Cloud, and DigitalOcean",
+        "db-card-3-title": "Custom Database Architecture",
+        "db-card-3-desc": "Designing customized, highly scalable database structures and APIs to manage complex business data securely.",
+
+        // --- Software Card စာသားများ ---
+        "software-page-title": "Custom Software Solutions",
+        "sw-card-1-title": "Enterprise & School Management",
+        "sw-card-1-desc": "Developing tailor-made business software, private school systems, and employee attendance management systems.",
+        "sw-card-2-title": "Mobile Application Development",
+        "sw-card-2-desc": "Creating modern and user-friendly mobile applications for both Android and iOS platforms.",
+        "sw-card-3-title": "POS & Retail Solutions",
+        "sw-card-3-desc": "Building efficient Point of Sale (POS) and inventory management systems for retail stores and warehouses.",
+
         // --- Payment စာသားများ ---
         "btn-buy-now": "Buy Now",
         "payment-title": "Payment Methods",
@@ -187,12 +205,12 @@ const translations = {
         "services-main-title": "ကျွန်ုပ်တို့၏ ဝန်ဆောင်မှုများ",
         "service-1-title": "Premium Subscriptions & Payment Solutions",
         "service-1-desc": "CapCut, Canva နှင့် အခြား Premium ဝန်ဆောင်မှုများကို Credit Card မလိုဘဲ ဝယ်ယူနိုင်ပါသည်။",
-        "service-2-title": "စိတ်ကြိုက် Software ရေးဆွဲခြင်း",
+        "service-2-title": "Software ရေးဆွဲခြင်း",
         "service-2-desc": "လုပ်ငန်းသုံး software အမျိုးမျိုးကို စိတ်ကြိုက်ရေးဆွဲပေးခြင်း။",
         "service-3-title": "Web Development",
         "service-3-desc": "ခေတ်မီနည်းပညာများကို အသုံးပြု၍ လှပသော ဝဘ်ဆိုဒ်များ ဖန်တီးပေးခြင်း။",
-        "service-4-title": "Mobile App ရေးဆွဲခြင်း",
-        "service-4-desc": "Android နှင့် iOS နှစ်မျိုးလုံးအတွက် မိုဘိုင်း application များ ရေးဆွဲပေးခြင်း။",
+        "service-4-title": "Database နှင့် Cloud ဝန်ဆောင်မှုများ",
+        "service-4-desc": "သင့်လုပ်ငန်းအတွက် စိတ်ချယုံကြည်ရသော Database နှင့် Cloud Server များ တည်ဆောက်ပေးခြင်း။",
         "service-5-title": "AI Agent နှင့် Automation",
         "service-5-desc": "AI နည်းပညာကို အသုံးပြု၍ လုပ်ငန်းစဉ်များကို အလိုအလျောက် လုပ်ဆောင်ပေးသော စနစ်များ။",
         "service-6-title": "သင်ခန်းစာ အကြောင်းအရာများ",
@@ -261,6 +279,24 @@ const translations = {
         "ai-card-2-desc": "အရောင်းလုပ်ငန်းစဉ်များတွင် ပစ်မှတ်ထားသော Customer များကို ရှာဖွေပေးပြီး အလိုအလျောက် မှတ်တမ်းတင်ပေးမည့် စနစ်။",
         "ai-card-3-title": "Data Entry Automation",
         "ai-card-3-desc": "ရှုပ်ထွေးသော အချက်အလက်များနှင့် စာရင်းဇယားများကို AI ဖြင့် တိကျမြန်ဆန်စွာ အလိုအလျောက် ရိုက်သွင်းပေးမည့် စနစ်။",
+
+        // --- Database & Cloud Card စာသားများ ---
+        "db-main-desc": "သင့်စီးပွားရေးလုပ်ငန်းများ လုံခြုံချောမွေ့စွာ လည်ပတ်နိုင်ရန် အဆင့်မြင့် Database စနစ်များနှင့် Cloud Server များကို စိတ်ကြိုက်တည်ဆောက်ပေးပါသည်။",
+        "db-card-1-title": "POS & ERP Database စနစ်များ",
+        "db-card-1-desc": "အရောင်းဆိုင်သုံး POS နှင့် လုပ်ငန်းသုံး ERP ဆော့ဖ်ဝဲလ်များအတွက် မြန်ဆန်လုံခြုံသော Database စနစ်များ ရေးဆွဲပေးခြင်း။",
+        "db-card-2-title": "Cloud Server တည်ဆောက်ခြင်း",
+        "db-card-2-desc": "လုံခြုံရေးမြင့်မားသော AWS, Google Cloud ကဲ့သို့ Cloud Server များ ချိတ်ဆက်တည်ဆောက်ပေးခြင်းနှင့် ထိန်းသိမ်းပေးခြင်း။",
+        "db-card-3-title": " Database တည်ဆောက်ခြင်း",
+        "db-card-3-desc": "ရှုပ်ထွေးသော အချက်အလက်များကို လုံခြုံစွာ သိမ်းဆည်းနိုင်ရန် Database နှင့် API စနစ်များကို တည်ဆောက်ပေးခြင်း။",
+
+        // --- Software Card စာသားများ ---
+        "software-page-title": "လုပ်ငန်းသုံး ဆော့ဝဲလ် ဝန်ဆောင်မှုများ",
+        "sw-card-1-title": "ရုံးသုံး နှင့် ကျောင်းသုံးစနစ်များ",
+        "sw-card-1-desc": "ရုံးသုံး ဆော့ဝဲများ၊ ကိုယ်ပိုင်ကျောင်းသုံးစနစ်များနှင့် ဝန်ထမ်းအဝင်အထွက် (Attendance) စောင့်ကြည့်စနစ်များကို သီးသန့်ဖန်တီးပေးပါသည်။",
+        "sw-card-2-title": "Mobile Application ရေးဆွဲခြင်း",
+        "sw-card-2-desc": "Android နှင့် iOS နှစ်မျိုးလုံးတွင် အသုံးပြုနိုင်သည့် ခေတ်မီပြီး အသုံးပြုရလွယ်ကူသော Mobile Application များကို ရေးဆွဲပေးပါသည်။",
+        "sw-card-3-title": "POS နှင့် အရောင်းဆိုင်သုံးစနစ်များ",
+        "sw-card-3-desc": "အရောင်းဆိုင်များ၊ Store ဆိုင်များအတွက် အထူးသင့်လျော်သော အရောင်းမှတ်တမ်းနှင့် ပစ္စည်းလက်ကျန်စာရင်း (Inventory) စနစ်များကို ဖန်တီးပေးပါသည်။",
 
         // --- Payment စာသားများ ---
         "btn-buy-now": "ဝယ်ယူရန်",
