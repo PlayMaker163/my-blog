@@ -441,10 +441,28 @@ document.addEventListener("DOMContentLoaded", function () {
 // --- Helper Functions ---
 
 function handleCredentialResponse(response) {
-    console.log("Token: " + response.credential);
-    alert("Login Success!");
-    const authModal = document.getElementById("auth-modal");
-    if (authModal) authModal.style.display = "none";
+    // Google ကပေးတဲ့ Credential ကို Backend ဆီ ပို့မယ်
+    fetch("https://my-blog-5ygr.onrender.com/auth/google", { // သင့် Render Backend URL ကို သုံးပါ
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: response.credential }),
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                console.log("Login Success:", data.user);
+                alert("မင်္ဂလာပါ " + data.user.name);
+                // ဥပမာ - Modal ကို ပိတ်လိုက်တာမျိုး လုပ်နိုင်ပါတယ်
+                document.getElementById("auth-modal").style.display = "none";
+            } else {
+                alert("Login Failed!");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
 
 function openModal() {
