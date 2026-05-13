@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI & DIGITAL SOLUTIONS | Home</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -24,13 +25,11 @@
             <li><a href="index.html" data-key="nav-home">Home</a></li>
             <li><a href="about.html" data-key="nav-about">About Us</a></li>
             <li><a href="services.html" data-key="nav-services">Our Services</a></li>
-            <!-- <li><a href="#" data-key="nav-portfolio">Our Portfolio</a></li> -->
             <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
         </ul>
 
         <div class="nav-extras">
-            <a href="#" class="btn-login" data-key="btn-login">Login</a>
-            <a href="#" class="btn-signup" data-key="btn-signup">Sign Up</a>
+            <div id="nav-auth-container"></div>
             <div class="language-selector">
                 <i class="fas fa-globe"></i>
                 <select id="lang-switch">
@@ -51,7 +50,6 @@
                     <a href="services.html" class="btn-get-started" data-key="btn-get-started">
                         Get Started <i class="fas fa-arrow-right"></i>
                     </a>
-
                     <a href="contact.html" class="btn-contact-us" data-key="btn-contact">Contact Us</a>
                 </div>
             </div>
@@ -62,7 +60,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="logos-container">
             <div class="logos-wrapper">
@@ -101,7 +98,6 @@
                     <li><a href="index.html" data-key="nav-home">Home</a></li>
                     <li><a href="about.html" data-key="nav-about">About Us</a></li>
                     <li><a href="services.html" data-key="nav-services">Services</a></li>
-                    <!-- <li><a href="#" data-key="nav-portfolio">Portfolio</a></li> -->
                     <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
                 </ul>
             </div>
@@ -125,6 +121,18 @@
             <p>&copy; 2026 AI & Digital Solutions. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="auth-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" id="close-auth-modal">&times;</span>
+            <h2 style="margin-top:20px;">Welcome</h2>
+            <p id="auth-modal-desc" style="color:#666; margin-bottom:20px;">Welcome to AI & DIGITAL SOLUTIONS. Please
+                sign in to continue.</p>
+            <div class="auth-options" style="display:flex; justify-content:center;">
+                <div id="google-login-btn"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -7,8 +7,7 @@ const translations = {
         "nav-services": "Our Services",
         "nav-portfolio": "Our Portfolio",
         "nav-contact": "Contact Us",
-        "btn-login": "Login",
-        "btn-signup": "Sign Up",
+        "btn-get-started": "Get Started",
         "btn-contact": "Contact Us",
 
         // --- Home Page (Hero Section) --- 
@@ -163,8 +162,7 @@ const translations = {
         "nav-services": "ဝန်ဆောင်မှုများ",
         "nav-portfolio": "လုပ်ဆောင်ချက်များ",
         "nav-contact": "ဆက်သွယ်ရန်",
-        "btn-login": "အကာင့်ဝင်ရန်",
-        "btn-signup": "အသစ်ဖွင့်ရန်",
+        "btn-get-started": "Get Started",
         "btn-contact": "ဆက်သွယ်ရန်",
 
         // --- Home Page (Hero Section) ---
@@ -314,23 +312,9 @@ const translations = {
     }
 };
 
-// --- (ခ) Function များ ---
+// --- (က) Function များ ---
 
-// ၁။ ဘာသာစကား ပြောင်းလဲပေးသည့် function
-function updateContent(lang) {
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
-        }
-    });
-
-    if (document.getElementById('lang-switch')) {
-        document.getElementById('lang-switch').value = lang;
-    }
-}
-
-// ၂။ လက်ရှိရောက်နေသည့် စာမျက်နှာကို Highlighting လုပ်ပေးသည့် function
+// ၁။ လက်ရှိရောက်နေသည့် စာမျက်နှာကို Highlighting လုပ်ပေးသည့် function
 function setActiveNavLink() {
     const currentLocation = window.location.pathname.split("/").pop() || "index.html";
     const navLinks = document.querySelectorAll('.nav-links li a');
@@ -344,64 +328,125 @@ function setActiveNavLink() {
     });
 }
 
-// --- (ဂ) Event Listeners (အလုပ်လုပ်ခိုင်းသည့်အပိုင်း) ---
+// ၂။ Google Auth စတင်ခြင်း (Logo တန်းပေါ်အောင် ဤနေရာတွင် စစ်ဆေးသည်)
+function initGoogleAuth() {
+    const btnContainer = document.getElementById("google-login-btn");
 
-// Language Switch Event
-const langSwitch = document.getElementById('lang-switch');
-if (langSwitch) {
-    langSwitch.addEventListener('change', (e) => {
-        const lang = e.target.value;
-        localStorage.setItem('selectedLang', lang);
-        updateContent(lang);
-    });
+    // google object ရှိမရှိ ထပ်မံစစ်ဆေးခြင်း
+    if (typeof google !== 'undefined' && google.accounts && btnContainer) {
+        google.accounts.id.initialize({
+            client_id: "995318351629-vqhshj2i1h54g2gtdqkr62bdkuf9lgk4.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+        });
+
+        // Button ကို render လုပ်ပါ
+        google.accounts.id.renderButton(
+            btnContainer,
+            { theme: "outline", size: "large", width: "300" }
+        );
+    } else {
+        // Library မရောက်သေးရင် ၅၀၀ မီလီစက္ကန့် စောင့်ပြီး ပြန်ကြိုးစားပါ
+        setTimeout(initGoogleAuth, 500);
+    }
 }
 
-// Theme Toggle Logic
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const body = document.body;
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const isDark = body.getAttribute('data-theme') === 'dark';
-        const newTheme = isDark ? 'light' : 'dark';
-        body.setAttribute('data-theme', newTheme);
-        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        localStorage.setItem('theme', newTheme);
-    });
+// ၃။ QR Code ကာကွယ်ခြင်း
+function protectQRCode() {
+    const qrImage = document.querySelector('#kpayModal img');
+    if (qrImage) {
+        qrImage.addEventListener('contextmenu', (e) => e.preventDefault());
+        qrImage.style.pointerEvents = 'none';
+        qrImage.style.userSelect = 'none';
+    }
 }
 
-// စာမျက်နှာ စဖွင့်လိုက်တိုင်း Theme၊ Language နှင့် Active Link ကို စစ်ဆေးခြင်း
-window.addEventListener('DOMContentLoaded', () => {
-    // Theme စစ်ဆေးခြင်း
+// --- (ခ) Event Listeners ---
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ၁။ Navbar မှာ Get Started ခလုတ်ထည့်ခြင်း
+    const authContainer = document.getElementById("nav-auth-container");
+    if (authContainer) {
+        authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
+    }
+
+    // ၂။ Google Auth Modal HTML မရှိလျှင် ထည့်ခြင်း
+    if (!document.getElementById("auth-modal")) {
+        const modalHTML = `
+            <div id="auth-modal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close-modal" id="close-auth-modal">&times;</span>
+                    <h2 style="margin-top:20px;">Welcome</h2>
+                    <p id="auth-modal-desc" style="color:#666; margin-bottom:20px;">Welcome to AI & DIGITAL SOLUTIONS. Please sign in to continue.</p>
+                    <div class="auth-options" style="display:flex; justify-content:center;">
+                        <div id="google-login-btn"></div> 
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    // ၃။ Google Auth စတင်ခြင်း
+    initGoogleAuth();
+
+    // ၄။ Theme & Active Link စစ်ဆေးခြင်း
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     if (themeIcon) {
         themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
-    // Language စစ်ဆေးခြင်း
-    const savedLang = localStorage.getItem('selectedLang') || 'en';
-    updateContent(savedLang);
-
-    // Active Link စစ်ဆေးခြင်း
     setActiveNavLink();
+
+    // ၅။ Theme Toggle Event
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            if (themeIcon) themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
+    // ၆။ Click Events (Modal ဖွင့်/ပိတ်)
+    window.addEventListener("click", function (event) {
+        const authModal = document.getElementById("auth-modal");
+        const openBtn = document.getElementById("open-auth-modal");
+        const kpayModal = document.getElementById("kpayModal");
+
+        // Auth Modal ဖွင့်ခြင်း
+        if (openBtn && (event.target === openBtn || openBtn.contains(event.target))) {
+            event.preventDefault();
+            if (authModal) {
+                authModal.style.display = "block";
+                initGoogleAuth(); // Modal ပွင့်ချိန်မှာ Button ကို ပြန် render လုပ်ပေးခြင်း
+            }
+        }
+
+        // Modal များ ပိတ်ခြင်း
+        if (event.target.id === "close-auth-modal" || event.target.classList.contains("close-modal") || event.target === authModal) {
+            if (authModal) authModal.style.display = "none";
+        }
+        if (kpayModal && event.target === kpayModal) {
+            kpayModal.style.display = "none";
+        }
+    });
 });
 
-// ၃။ QR Code ပုံကို Save လုပ်ခြင်းမှ ကာကွယ်ပေးသည့် Logic
-function protectQRCode() {
-    const qrImage = document.querySelector('#kpayModal img');
-    if (qrImage) {
-        // Right-click ပိတ်ခြင်း
-        qrImage.addEventListener('contextmenu', (e) => e.preventDefault());
+// --- Helper Functions ---
 
-        // Mobile ဖုန်းများတွင် ဖိထားလျှင် ပေါ်လာသည့် Menu ကို ပိတ်ခြင်း
-        qrImage.style.pointerEvents = 'none';
-        qrImage.style.userSelect = 'none';
-    }
+function handleCredentialResponse(response) {
+    console.log("Token: " + response.credential);
+    alert("Login Success!");
+    const authModal = document.getElementById("auth-modal");
+    if (authModal) authModal.style.display = "none";
 }
 
-// Modal ပွင့်လာတိုင်း အပေါ်က function ကို ခေါ်ပေးရန်
 function openModal() {
     const modal = document.getElementById("kpayModal");
     if (modal) {
@@ -412,7 +457,5 @@ function openModal() {
 
 function closeModal() {
     const modal = document.getElementById("kpayModal");
-    if (modal) {
-        modal.style.display = "none";
-    }
+    if (modal) modal.style.display = "none";
 }
