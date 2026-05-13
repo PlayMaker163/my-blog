@@ -1,21 +1,32 @@
+import os
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from fastapi.middleware.cors import CORSMiddleware
+from motor.motor_asyncio import AsyncIOMotorClient  # MongoDB အတွက်
+from dotenv import load_dotenv
+
+# .env ဖိုင်ကို ဖတ်ခိုင်းခြင်း
+load_dotenv()
 
 app = FastAPI()
 
-# CORS ခွင့်ပြုပေးရန် (Frontend နဲ့ Backend port မတူရင် လိုအပ်ပါတယ်)
+# Environment Variables များ ရယူခြင်း
+MONGO_DETAILS = os.getenv("MONGO_DETAILS")
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+
+# MongoDB ချိတ်ဆက်ခြင်း
+client = AsyncIOMotorClient(MONGO_DETAILS)
+database = client.ai_digital_db  # Database နာမည် (ကြိုက်တာပေးလို့ရပါတယ်)
+user_collection = database.get_collection("users")  # Collection နာမည်
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Render link အတိအကျ ပြောင်းထည့်နိုင်ပါတယ်
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
-)
-
-GOOGLE_CLIENT_ID = (
-    "995318351629-vqhshj2i1h54g2gtdqkr62bdkuf9lgk4.apps.googleusercontent.com"
 )
 
 
@@ -31,18 +42,23 @@ async def verify_google_token(data: AuthData):
             data.token, requests.Request(), GOOGLE_CLIENT_ID
         )
 
-        # User ရဲ့ အချက်အလက်များကို ထုတ်ယူခြင်း
-        userid = idinfo["sub"]
-        email = idinfo.get("email")
-        name = idinfo.get("name")
-        picture = idinfo.get("picture")
-
-        print(f"User Logged In: {name} ({email})")
-
-        return {
-            "status": "success",
-            "user": {"id": userid, "email": email, "name": name, "picture": picture},
+        # User အချက်အလက်များ စုစည်းခြင်း
+        user_data = {
+            "google_id": idinfo["sub"],
+            "email": idinfo.get("email"),
+            "name": idinfo.get("name"),
+            "picture": idinfo.get("picture"),
+            "last_login": datetime.utcnow(),
         }
-    except ValueError:
-        # Token မမှန်ကန်လျှင်
-        raise HTTPException(status_code=400, detail="Invalid Google Token")
+
+        # MongoDB မှာ သိမ်းခြင်း (Upsert: ရှိရင် update လုပ်၊ မရှိရင် အသစ်ထည့်)
+        await user_collection.update_one(
+            {"google_id": user_data["google_id"]}, {"$set": user_data}, upsert=True
+        )
+
+        print(f"User synced to MongoDB: {user_data['name']}")
+
+        return {"status": "success", "user": user_data}
+    except Exception as e:
+        print(f"Error: {e}")
+        raise HTTPException(status_code=400, detail="Authentication failed")

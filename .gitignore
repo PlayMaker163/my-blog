@@ -3,3 +3,4 @@ DBpass.txt
 *.pdf
 backend/__pycache__/
 .vscode/
+.env
