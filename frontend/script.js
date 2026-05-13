@@ -311,18 +311,46 @@ const translations = {
         "footer-contact-title": "ဆက်သွယ်ရန်"
     }
 };
+// --- (ခ) ဘာသာစကားပြောင်းလဲပေးသည့် Function ---
+function changeLanguage(lang) {
+    localStorage.setItem("selected_lang", lang);
+    if (typeof translations !== 'undefined' && translations[lang]) {
+        // HTML ထဲက data-key ကိုပဲ ဖတ်ပြီး ပြောင်းလဲပေးမှာပါ
+        document.querySelectorAll("[data-key]").forEach(el => {
+            const key = el.getAttribute("data-key");
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+    }
+}
 
-/**
- * ၁။ UI အခြေအနေကို စစ်ဆေးပြီး Navbar ကို ပြောင်းလဲပေးသည့် Function
- */
+// --- (ဂ) Kpay Modal ပွင့်ရန် Logic (နာမည်ကို openModal လို့ ပြောင်းပေးထားတယ်) ---
+function openModal() {
+    const modal = document.getElementById("kpayModal");
+    if (modal) {
+        modal.style.display = "flex";
+        // QR Code Copy ကာကွယ်ခြင်း
+        const qrImage = modal.querySelector('img');
+        if (qrImage) {
+            qrImage.oncontextmenu = (e) => e.preventDefault();
+            qrImage.style.pointerEvents = 'auto'; // နှိပ်လို့ရအောင် auto ပြန်ထားမယ်
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("kpayModal");
+    if (modal) modal.style.display = "none";
+}
+
+// --- (ဃ) Google Auth & Navbar UI ---
 function updateNavbarUI() {
     const userInfo = JSON.parse(localStorage.getItem("user_info"));
     const authContainer = document.getElementById("nav-auth-container");
-
     if (!authContainer) return;
 
     if (userInfo) {
-        // Login ဝင်ထားလျှင်: Profile ပုံနှင့် Logout ခလုတ်ပြမည်
         authContainer.innerHTML = `
             <div class="user-profile-nav" style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px;">
                 <img src="${userInfo.picture}" alt="User" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #6244C5;">
@@ -331,22 +359,15 @@ function updateNavbarUI() {
             </div>
         `;
     } else {
-        // Login မဝင်ရသေးလျှင်: Get Started ခလုတ်ပြမည်
         authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
     }
 }
 
-/**
- * ၂။ Logout လုပ်ဆောင်ချက်
- */
 function logout() {
     localStorage.removeItem("user_info");
     window.location.reload();
 }
 
-/**
- * ၃။ Google Auth လက်ခံရယူခြင်းနှင့် Backend သို့ ပို့ဆောင်ခြင်း
- */
 function handleCredentialResponse(response) {
     fetch("https://my-blog-5ygr.onrender.com/auth/google", {
         method: "POST",
@@ -356,22 +377,12 @@ function handleCredentialResponse(response) {
         .then(res => res.json())
         .then(data => {
             if (data.status === "success") {
-                // Data သိမ်းပြီး UI ကို ချက်ချင်း Update လုပ်သည်
                 localStorage.setItem("user_info", JSON.stringify(data.user));
-                updateNavbarUI();
-
-                document.getElementById("auth-modal").style.display = "none";
-                alert("မင်္ဂလာပါ " + data.user.name);
-            } else {
-                alert("Login Failed!");
+                location.reload();
             }
-        })
-        .catch(error => console.error("Error:", error));
+        });
 }
 
-/**
- * ၄။ Google Auth Button ကို Render လုပ်ခြင်း
- */
 function initGoogleAuth() {
     const btnContainer = document.getElementById("google-login-btn");
     if (typeof google !== 'undefined' && google.accounts && btnContainer) {
@@ -380,75 +391,50 @@ function initGoogleAuth() {
             callback: handleCredentialResponse
         });
         google.accounts.id.renderButton(btnContainer, { theme: "outline", size: "large", width: "300" });
-    } else {
-        setTimeout(initGoogleAuth, 500);
     }
 }
 
-/**
- * ၅။ အထွေထွေ UI လုပ်ဆောင်ချက်များ (Theme, Active Link, Modal)
- */
+// --- (င) စာမျက်နှာစတင်ချိန်တွင် လုပ်ဆောင်မည့်အရာများ ---
 document.addEventListener("DOMContentLoaded", function () {
-    // Navbar အခြေအနေကို အရင်ဆုံး စစ်ဆေးသည်
-    updateNavbarUI();
-
-    // Modal HTML ကို Body ထဲသို့ ထည့်သွင်းခြင်း
-    if (!document.getElementById("auth-modal")) {
-        const modalHTML = `
-            <div id="auth-modal" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <span class="close-modal" id="close-auth-modal">&times;</span>
-                    <h2 style="margin-top:20px;">Welcome</h2>
-                    <p style="color:#666; margin-bottom:20px;">Please sign in to continue.</p>
-                    <div class="auth-options" style="display:flex; justify-content:center;">
-                        <div id="google-login-btn"></div> 
-                    </div>
-                </div>
-            </div>`;
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    // ၁။ ဘာသာစကား စတင်သတ်မှတ်ခြင်း
+    const savedLang = localStorage.getItem("selected_lang") || "en";
+    const langSwitch = document.getElementById("lang-switch");
+    if (langSwitch) {
+        langSwitch.value = savedLang;
+        langSwitch.addEventListener("change", (e) => changeLanguage(e.target.value));
     }
+    changeLanguage(savedLang);
 
+    // ၂။ Login UI & Theme
+    updateNavbarUI();
     initGoogleAuth();
 
-    // Theme Logic
     const body = document.body;
-    const themeIcon = document.getElementById('theme-icon');
+    const themeToggle = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
-    if (themeIcon) themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
 
-    // Active Link Highlighting
-    const currentLocation = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll('.nav-links li a').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === currentLocation);
-    });
-
-    // Theme Toggle Click
-    const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const isDark = body.getAttribute('data-theme') === 'dark';
             const newTheme = isDark ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
-            if (themeIcon) themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
             localStorage.setItem('theme', newTheme);
         });
     }
 
-    // Modal ဖွင့်/ပိတ် Click Events
-    window.addEventListener("click", function (e) {
+    // ၃။ Modal များကို အပြင်ဘက်ကနေ နှိပ်ရင် ပိတ်ပေးရန်
+    window.addEventListener("click", (e) => {
         const authModal = document.getElementById("auth-modal");
+        const kpayModal = document.getElementById("kpayModal");
 
-        // Modal ဖွင့်ခြင်း (Event Delegation သုံးထားသည်)
         if (e.target.id === "open-auth-modal") {
             e.preventDefault();
             authModal.style.display = "block";
             initGoogleAuth();
         }
-
-        // Modal ပိတ်ခြင်း
-        if (e.target.id === "close-auth-modal" || e.target === authModal) {
-            authModal.style.display = "none";
-        }
+        if (e.target === authModal) authModal.style.display = "none";
+        if (e.target === kpayModal) closeModal();
+        if (e.target.id === "close-auth-modal") authModal.style.display = "none";
     });
-}); 
+});
