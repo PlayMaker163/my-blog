@@ -481,3 +481,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// --- (အသစ်ထည့်ရန်) Real-time Active Users by WebSocket ---
+function initActiveUsersTracking() {
+
+    // ==========================================
+    // အောက်ပါ Option နှစ်ခုထဲမှ မိမိစမ်းသပ်လိုသော တစ်ခုကိုသာ ဖွင့်ထားပါ။
+    // မသုံးချင်သော ကုဒ်စာကြောင်းရှေ့တွင် // ခံ၍ ပိတ်ထားပါ။
+    // ==========================================
+
+    // Option 1: Localhost အတွက် (သင့်ကွန်ပျူတာမှာ uvicorn ဖြင့် Run နေချိန်သုံးရန်)
+    //const wsUrl = "ws://localhost:8000/ws";
+
+    // Option 2: Render Server အတွက် (Online ပေါ်အမှန်တကယ် တင်ထားချိန်သုံးရန်)
+    const wsUrl = "wss://my-blog-5ygr.onrender.com/ws";
+
+    // ==========================================
+
+    const ws = new WebSocket(wsUrl);
+
+    // Backend (FastAPI) မှ လူအရေအတွက် လှမ်းပို့သည့်အခါ ဖမ်းယူပြီး UI တွင် ပြောင်းပေးခြင်း
+    ws.onmessage = function (event) {
+        const countElement = document.getElementById("active-user-count");
+        if (countElement) {
+            countElement.innerText = event.data; // အမှန်တကယ် ဝင်ကြည့်နေသူ အရေအတွက်
+        }
+    };
+
+    // အကြောင်းအမျိုးမျိုးကြောင့် Connection ပြတ်သွားပါက ၅ စက္ကန့်နေလျှင် ပြန်ချိတ်ရန်
+    ws.onclose = function () {
+        setTimeout(initActiveUsersTracking, 5000);
+    };
+}
+
+// စာမျက်နှာပွင့်တာနဲ့ WebSocket စတင်ချိတ်ဆက်မည်
+document.addEventListener("DOMContentLoaded", function () {
+    // သင့်ရဲ့ အခြားသော DOMContentLoaded ကုဒ်များ (ဥပမာ - auth, theme တွေ) ရှိပြီးသားပါ
+
+    // Active User တွက်သည့် Function ကို ခေါ်မည်
+    initActiveUsersTracking();
+});

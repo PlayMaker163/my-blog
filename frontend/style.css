@@ -959,3 +959,59 @@ body {
     display: flex;
     justify-content: center;
 }
+
+/* System Status & Active Users Container */
+.system-status-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Status နဲ့ Active Now ကြား အကွာအဝေး */
+    margin-top: 15px;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* System Status Dot (ဥပမာ အပြာ သို့မဟုတ် အစိမ်း) */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    border-radius: 50%;
+}
+
+/* Active Users Blinking Dot (အစိမ်းရောင်) */
+.blink-green-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff00;
+    animation: blinker 1.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+#active-user-count {
+    font-weight: bold;
+    color: #00ff00;
+}
