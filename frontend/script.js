@@ -7,7 +7,7 @@ const translations = {
         "nav-services": "Our Services",
         "nav-portfolio": "Our Portfolio",
         "nav-contact": "Contact Us",
-        "btn-get-started": "Get Started",
+        "btn-get-started": "Login with Google",
         "btn-contact": "Contact Us",
 
         // --- Home Page (Hero Section) --- 
@@ -162,7 +162,7 @@ const translations = {
         "nav-services": "ဝန်ဆောင်မှုများ",
         "nav-portfolio": "လုပ်ဆောင်ချက်များ",
         "nav-contact": "ဆက်သွယ်ရန်",
-        "btn-get-started": "Get Started",
+        "btn-get-started": "Google ဖြင့် ဝင်မည်",
         "btn-contact": "ဆက်သွယ်ရန်",
 
         // --- Home Page (Hero Section) ---
@@ -381,10 +381,10 @@ function updateNavbarUI() {
             `;
         } catch (e) {
             console.error("Error parsing user info", e);
-            authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
+            authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Login with Google</a>`;
         }
     } else {
-        authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
+        authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Login with Google</a>`;
     }
 }
 
