@@ -325,7 +325,7 @@ function changeLanguage(lang) {
     }
 }
 
-// --- (ဂ) Kpay Modal ပွင့်ရန် Logic (နာမည်ကို openModal လို့ ပြောင်းပေးထားတယ်) ---
+// --- (ဂ) Kpay Modal ပွင့်ရန် Logic ---
 function openModal() {
     const modal = document.getElementById("kpayModal");
     if (modal) {
@@ -344,20 +344,45 @@ function closeModal() {
     if (modal) modal.style.display = "none";
 }
 
-// --- (ဃ) Google Auth & Navbar UI ---
+// --- (ဃ) Google Auth, Modal & Navbar UI ---
+
+// Page တွေမှာ Modal HTML မပါလာခဲ့ရင် အလိုအလျောက် ထည့်ပေးမယ့် Function
+function ensureAuthModalExists() {
+    if (!document.getElementById("auth-modal")) {
+        const modalHTML = `
+        <div id="auth-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-modal" id="close-auth-modal">&times;</span>
+                <h2 style="margin-top:20px;">Welcome</h2>
+                <p id="auth-modal-desc" style="color:#666; margin-bottom:20px;">Welcome to AI & DIGITAL SOLUTIONS. Please sign in to continue.</p>
+                <div class="auth-options" style="display:flex; justify-content:center;">
+                    <div id="google-login-btn"></div>
+                </div>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+}
+
 function updateNavbarUI() {
-    const userInfo = JSON.parse(localStorage.getItem("user_info"));
+    const userInfoStr = localStorage.getItem("user_info");
     const authContainer = document.getElementById("nav-auth-container");
     if (!authContainer) return;
 
-    if (userInfo) {
-        authContainer.innerHTML = `
-            <div class="user-profile-nav" style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px;">
-                <img src="${userInfo.picture}" alt="User" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #6244C5;">
-                <span style="font-weight: 500; font-size: 14px;">${userInfo.name}</span>
-                <button onclick="logout()" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 12px; font-weight: bold; padding: 0;">Logout</button>
-            </div>
-        `;
+    if (userInfoStr) {
+        try {
+            const userInfo = JSON.parse(userInfoStr);
+            authContainer.innerHTML = `
+                <div class="user-profile-nav" style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px;">
+                    <img src="${userInfo.picture}" alt="User" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #6244C5;">
+                    <span style="font-weight: 500; font-size: 14px;">${userInfo.name}</span>
+                    <button onclick="logout()" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 12px; font-weight: bold; padding: 0;">Logout</button>
+                </div>
+            `;
+        } catch (e) {
+            console.error("Error parsing user info", e);
+            authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
+        }
     } else {
         authContainer.innerHTML = `<a href="#" class="btn-signup" id="open-auth-modal">Get Started</a>`;
     }
@@ -378,9 +403,10 @@ function handleCredentialResponse(response) {
         .then(data => {
             if (data.status === "success") {
                 localStorage.setItem("user_info", JSON.stringify(data.user));
-                location.reload();
+                location.reload(); // Login ဝင်ပြီးရင် Page ကို Refresh လုပ်ပြီး Profile ပေါ်စေမည်
             }
-        });
+        })
+        .catch(err => console.error("Login error:", err));
 }
 
 function initGoogleAuth() {
@@ -396,6 +422,9 @@ function initGoogleAuth() {
 
 // --- (င) စာမျက်နှာစတင်ချိန်တွင် လုပ်ဆောင်မည့်အရာများ ---
 document.addEventListener("DOMContentLoaded", function () {
+    // Page တိုင်းမှာ Auth Modal အမြဲရှိနေအောင် သေချာလုပ်ပေးခြင်း
+    ensureAuthModalExists();
+
     // ၁။ ဘာသာစကား စတင်သတ်မှတ်ခြင်း
     const savedLang = localStorage.getItem("selected_lang") || "en";
     const langSwitch = document.getElementById("lang-switch");
@@ -423,18 +452,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ၃။ Modal များကို အပြင်ဘက်ကနေ နှိပ်ရင် ပိတ်ပေးရန်
+    // ၃။ Modal များကို အပြင်ဘက်ကနေ နှိပ်ရင် ပိတ်ပေးရန် နှင့် Event Listeners
     window.addEventListener("click", (e) => {
         const authModal = document.getElementById("auth-modal");
         const kpayModal = document.getElementById("kpayModal");
 
-        if (e.target.id === "open-auth-modal") {
+        // Open Auth Modal (Page တိုင်းမှာ အလုပ်လုပ်စေရန် closest ဖြင့်ဖမ်းခြင်း)
+        if (e.target.closest("#open-auth-modal")) {
             e.preventDefault();
-            authModal.style.display = "block";
-            initGoogleAuth();
+            if (authModal) {
+                authModal.style.display = "block";
+                initGoogleAuth(); // Modal ပွင့်လာမှ Button ကို အသစ်ပြန် render လုပ်ပေးမယ်
+            }
         }
-        if (e.target === authModal) authModal.style.display = "none";
-        if (e.target === kpayModal) closeModal();
-        if (e.target.id === "close-auth-modal") authModal.style.display = "none";
+
+        // Close Modal with X button
+        if (e.target.closest("#close-auth-modal")) {
+            if (authModal) authModal.style.display = "none";
+        }
+
+        // Close Modal by clicking outside
+        if (e.target === authModal) {
+            authModal.style.display = "none";
+        }
+
+        if (e.target === kpayModal) {
+            closeModal();
+        }
     });
 });
