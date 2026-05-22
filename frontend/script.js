@@ -524,18 +524,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // --- (စ) Contact Form Submit လုပ်ခြင်း (MongoDB သို့ ပို့ရန်) ---
 document.addEventListener("DOMContentLoaded", function () {
-    const contactForm = document.querySelector('.contact-form');
+    // ဤနေရာတွင် '.contact-form' အစား 'contact-form' ဟု id ဖြင့် ရှာရန် ပြင်ထားသည်
+    const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Page ကို Reload အတင်းဖြစ်သွားခြင်းမှ တားဆီးရန်
+            e.preventDefault();
 
-            // ID များမှတဆင့် Form Data များကို ဆွဲယူခြင်း
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // Python ဘက်သို့ ပို့မည့် Data Format (ContactMessage Model နှင့် ကိုက်ညီရမည်)
             const data = {
                 name: name,
                 email: email,
@@ -543,10 +542,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             try {
-                // ပြောင်းလဲအသုံးပြုရန် လင့်ခ်များ
-                // Localhost မှာ Run နေချိန် (ကွန်ပျူတာမှာ စမ်းသပ်ချိန်) အောက်ကလင့်ကို သုံးပါ
-                //const backendUrl = "http://localhost:8000/api/contact";
-
+                // သင်အသုံးပြုနေသော URL
                 const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact";
 
                 const response = await fetch(backendUrl, {
@@ -561,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.ok) {
                     alert("Message Sent Successfully! We will contact you soon.");
-                    contactForm.reset(); // စာပို့အောင်မြင်ပါက Form အကွက်များကို ရှင်းလင်းရန်
+                    contactForm.reset();
                 } else {
                     alert("Error: " + result.detail);
                 }
