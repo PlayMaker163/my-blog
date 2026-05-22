@@ -9,6 +9,7 @@
     --text-dim: #cbd5e1;
     --glass-border: rgba(255, 255, 255, 0.1);
     --hero-overlay: linear-gradient(135deg, rgba(11, 13, 23, 0.6) 0%, rgba(11, 13, 23, 0.9) 100%);
+    --footer-bg: #05070a;
 }
 
 [data-theme="light"] {
@@ -19,6 +20,7 @@
     --text-dim: #475569;
     --glass-border: rgba(15, 23, 42, 0.1);
     --hero-overlay: linear-gradient(135deg, rgba(248, 250, 252, 0.7) 0%, rgba(248, 250, 252, 0.9) 100%);
+    --footer-bg: #e2e8f0;
 }
 
 * {
@@ -177,6 +179,8 @@ body {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.1;
+    color: var(--text-color);
+    /* ဒီနေရာလေးမှာ Theme အလိုက်ပြောင်းဖို့ အသစ်ထည့်ထားပါတယ် */
 }
 
 .highlight {
@@ -301,6 +305,17 @@ body {
 }
 
 /* --- ၅။ System Status --- */
+
+/* ဒီအောက်က စာကြောင်း ၃ ကြောင်းကို အသစ်ဝင်ထည့်ပေးပါ */
+.system-status {
+    color: var(--text-color);
+    font-weight: bold;
+    /* စာသားကို Bold တင်ရန် */
+    font-size: 1.1rem;
+    /* စာလုံးအရွယ်အစားကို နည်းနည်းကြီးရန် */
+}
+
+/* အောက်က dot နဲ့ pulse ကတော့ မင်းမူလရေးထားတဲ့အတိုင်း အတူတူပါပဲ */
 .system-status .dot {
     height: 10px;
     width: 10px;
@@ -394,10 +409,9 @@ body {
 
 /* --- ၇။ Footer Styling --- */
 .footer {
-    background-color: #05070a;
+    background-color: var(--footer-bg);
     padding: 80px 5% 30px 5%;
     border-top: 1px solid var(--glass-border);
-    margin-top: 50px;
 }
 
 .footer-container {
@@ -564,7 +578,7 @@ body {
 .member-info h3 {
     font-size: 1rem;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: var(--text-color);
     /* နာမည်ကို အဖြူရောင်ထားသည် */
 }
 
@@ -989,6 +1003,13 @@ body {
     border-radius: 50%;
 }
 
+/* --- Active Users အပိုင်း --- */
+
+/* ဒီ Class လေးကို အသစ်ထည့်ပေးပါ */
+.active-users-item {
+    color: var(--text-color);
+}
+
 /* Active Users Blinking Dot (အစိမ်းရောင်) */
 .blink-green-dot {
     width: 8px;
@@ -1013,5 +1034,6 @@ body {
 
 #active-user-count {
     font-weight: bold;
-    color: #00ff00;
+    color: var(--text-color);
+    /* အရင်က #00ff00 (အစိမ်းရောင်) အစား Theme အလိုက်ပြောင်းရန် ပြင်ထားသည် */
 }

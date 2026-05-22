@@ -1,8 +1,0 @@
-MONGO_DETAILS=mongodb+srv://aungsandar1410_db_user:A74zKtXJ6nBPAvE9@cluster0.mg0qgnc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-GOOGLE_CLIENT_ID=995318351629-vqhshj2i1h54g2gtdqkr62bdkuf9lgk4.apps.googleusercontent.com
-
-
-Mongodb 
-username == aungsandar1410_db_user
-password == A74zKtXJ6nBPAvE9
-code == mongodb+srv://aungsandar1410_db_user:A74zKtXJ6nBPAvE9@cluster0.mg0qgnc.mongodb.net/?appName=Cluster0
