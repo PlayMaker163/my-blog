@@ -521,3 +521,54 @@ document.addEventListener("DOMContentLoaded", function () {
     // Active User တွက်သည့် Function ကို ခေါ်မည်
     initActiveUsersTracking();
 });
+
+// --- (စ) Contact Form Submit လုပ်ခြင်း (MongoDB သို့ ပို့ရန်) ---
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.querySelector('.contact-form');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Page ကို Reload အတင်းဖြစ်သွားခြင်းမှ တားဆီးရန်
+
+            // ID များမှတဆင့် Form Data များကို ဆွဲယူခြင်း
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Python ဘက်သို့ ပို့မည့် Data Format (ContactMessage Model နှင့် ကိုက်ညီရမည်)
+            const data = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            try {
+                // ပြောင်းလဲအသုံးပြုရန် လင့်ခ်များ
+                // Localhost မှာ Run နေချိန် (ကွန်ပျူတာမှာ စမ်းသပ်ချိန်) အောက်ကလင့်ကို သုံးပါ
+                //const backendUrl = "http://localhost:8000/api/contact";
+
+                const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact";
+
+                const response = await fetch(backendUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("Message Sent Successfully! We will contact you soon.");
+                    contactForm.reset(); // စာပို့အောင်မြင်ပါက Form အကွက်များကို ရှင်းလင်းရန်
+                } else {
+                    alert("Error: " + result.detail);
+                }
+            } catch (error) {
+                console.error("Error sending message:", error);
+                alert("Something went wrong! Please check your connection.");
+            }
+        });
+    }
+});

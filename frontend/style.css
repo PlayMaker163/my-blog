@@ -742,62 +742,24 @@ body {
     margin: 0 auto;
 }
 
-/* Card နှစ်ခုလုံးကို အမည်းရောင်ပြောင်းပြီး Border လေးထည့်ထားပါတယ် */
-/* --- Contact Page Styles --- */
-
-/* ၁။ ပုံမှန် (Day Mode) အတွက် - Card များကို အဖြူရောင်ထားခြင်း */
+/* ၁။ ပုံမှန် (Day/Light Mode) အတွက် အခြေခံ Card */
 .contact-form-section,
 .contact-info-section {
     flex: 1;
     min-width: 300px;
     padding: 30px;
-    background-color: #ffffff;
-    /* Day mode မှာ အဖြူရောင် */
-    border: 1px solid #eeeeee;
+    background-color: var(--card-bg);
+    /* Theme အလိုက် အလိုအလျောက် ပြောင်းမည် */
+    border: 1px solid var(--glass-border);
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    color: #000000;
-    /* စာသားကို အမည်းရောင်ထားပါ */
 }
 
-/* Day Mode မှာ Label နှင့် Header အရောင်များ */
+/* ခေါင်းစဉ်အရောင်များ (Theme အလိုက် ပြောင်းမည်) */
 .contact-form-section h2,
-.contact-info-section h2,
-.input-group label {
-    color: #333333;
-}
-
-/* Day Mode မှာ Input Box များ */
-.input-group input,
-.input-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #000000;
-}
-
-/* ၂။ Dark Mode ပြောင်းလိုက်လျှင် - Card များကို အမည်းရောင် ပြောင်းလဲခြင်း */
-[data-theme="dark"] .contact-form-section,
-[data-theme="dark"] .contact-info-section {
-    background-color: #000000;
-    /* Dark mode မှာ အမည်းရောင် */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .contact-form-section h2,
-[data-theme="dark"] .contact-info-section h2,
-[data-theme="dark"] .input-group label {
-    color: #ffffff;
-}
-
-[data-theme="dark"] .input-group input,
-[data-theme="dark"] .input-group textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+.contact-info-section h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
 .input-group {
@@ -808,30 +770,43 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #cccccc;
-    /* Label စာသားကို ခဲရောင်ဖျော့ဖျော့ပြောင်းခြင်း */
+    color: var(--text-dim);
+    /* Theme အလိုက် အလိုအလျောက် ပြောင်းမည် */
 }
 
-/* Input Box တွေထဲမှာ စာရိုက်ရင် မြင်ရအောင် အရောင်ညှိခြင်း */
+/* --- Input Box များ (Light Mode တွင် အမည်းရောင်၊ Dark Mode တွင် အဖြူရောင်) --- */
 .input-group input,
 .input-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    /* Input ထဲကို မှောင်မှောင်လေးဖြစ်စေရန် */
-    color: #ffffff;
     font-family: inherit;
     outline: none;
+    /* Day Mode အခြေခံ (Light mode) */
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    color: #000000;
+    /* Day mode တွင် စာသား အမည်းရောင် */
+    transition: 0.3s;
 }
 
+/* Input Focus ဖြစ်ချိန် */
 .input-group input:focus,
 .input-group textarea:focus {
     border-color: #007bff;
-    /* Focus ဖြစ်ရင် အပြာရောင်လင်းစေရန် */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
+/* --- ၂။ Dark Mode ပြောင်းလိုက်လျှင် Input များ ပြောင်းလဲခြင်း --- */
+[data-theme="dark"] .input-group input,
+[data-theme="dark"] .input-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    /* Dark mode တွင် စာသား အဖြူရောင် */
+}
+
+/* Button */
 .btn-submit {
     padding: 12px 25px;
     background: #007bff;
@@ -842,13 +817,13 @@ body {
     font-size: 1rem;
     transition: 0.3s;
     width: 100%;
-    /* ခလုတ်ကို အပြည့်ဆွဲဆန့်ထားခြင်း */
 }
 
 .btn-submit:hover {
     background: #0056b3;
 }
 
+/* --- Contact Information (Address, Phone, Email) --- */
 .info-item {
     display: flex;
     align-items: center;
@@ -864,28 +839,31 @@ body {
 
 .info-item h4 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-color);
+    /* Theme အလိုက် အလိုအလျောက် ပြောင်းမည် */
 }
 
 .info-item p {
     margin: 0;
-    color: #aaaaaa;
+    color: var(--text-dim);
+    /* Theme အလိုက် အလိုအလျောက် ပြောင်းမည် */
 }
 
+/* Map */
 .map-container {
     margin-top: 30px;
     height: 250px;
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
-
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .contact-wrapper {
         flex-direction: column;
@@ -900,20 +878,17 @@ body {
 .contact-header-text h2 {
     font-size: 2.2rem;
     color: var(--text-color);
+    /* Theme အလိုက် အလိုအလျောက် ပြောင်းမည် */
     margin-bottom: 10px;
 }
 
 .contact-header-text p {
     font-size: 1.2rem;
     color: #007bff;
-    /* အပြာရောင်လေးနဲ့ ပေါ်လွင်အောင် ထားခြင်း */
     font-weight: 500;
-}
+} 
 
-/* Dark mode မှာ စာသားအရောင် မပျောက်အောင် ညှိခြင်း */
-[data-theme="dark"] .contact-header-text h2 {
-    color: #ffffff;
-}
+/* ------------------------------------------------ */
 
 /* Modal Background */
 .modal {
@@ -989,10 +964,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* System Status Dot (ဥပမာ အပြာ သို့မဟုတ် အစိမ်း) */
@@ -1008,6 +979,10 @@ body {
 /* ဒီ Class လေးကို အသစ်ထည့်ပေးပါ */
 .active-users-item {
     color: var(--text-color);
+    font-weight: bold;
+    /* စာသားကို Bold တင်ရန် */
+    font-size: 1.1rem;
+    /* စာလုံးအရွယ်အစားကို System Status နဲ့ တူအောင် ညှိရန် */
 }
 
 /* Active Users Blinking Dot (အစိမ်းရောင်) */
