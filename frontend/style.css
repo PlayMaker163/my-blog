@@ -68,15 +68,20 @@ body {
 
 .brand-name {
     font-size: 1.4rem;
-    /* စာလုံးကြီးပေးထားသည် */
+    /* Footer အတိုင်း 1.4rem သို့ ပြောင်းလဲ */
+    color: var(--primary-blue);
+    /* Footer အတိုင်း အပြာရောင်သို့ ပြောင်းလဲ */
     font-weight: 800;
-    /* Extra Bold */
 }
 
 .brand-tagline {
-    font-size: 0.7rem;
+    font-size: 1.4rem;
+    /* Brand Name နဲ့ အရွယ်အစား တူအောင် 1.4rem ထား */
     color: var(--primary-blue);
+    /* အပြာရောင်အတိုင်း ထားရှိ */
     font-weight: 800;
+    margin-left: 5px;
+    /* စာလုံးနှစ်စုကြား နည်းနည်း ခွာချင်ရင် သုံးရန် (မလိုရင် ဖြုတ်နိုင်သည်) */
 }
 
 .nav-links {
@@ -140,6 +145,13 @@ body {
     cursor: pointer;
     font-weight: 700;
     outline: none;
+}
+
+#lang-switch option {
+    background-color: var(--bg-color);
+    /* Theme အလိုက် နောက်ခံပြောင်းမည် */
+    color: var(--text-color);
+    /* Theme အလိုက် စာလုံးအရောင်ပြောင်းမည် */
 }
 
 #theme-toggle {
@@ -886,7 +898,7 @@ body {
     font-size: 1.2rem;
     color: #007bff;
     font-weight: 500;
-} 
+}
 
 /* ------------------------------------------------ */
 

@@ -23,7 +23,7 @@
             <li><a href="index.html" data-key="nav-home">Home</a></li>
             <li><a href="about.html" data-key="nav-about">About Us</a></li>
             <li><a href="services.html" data-key="nav-services">Our Services</a></li>
-            <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
+            <li><a href="contact.html" data-key="nav-contact" class="active">Contact Us</a></li>
         </ul>
         <div class="nav-extras">
             <div id="nav-auth-container"></div>
@@ -156,8 +156,11 @@
                     };
 
                     try {
-                        // Render ပေါ်ရှိ သင့်ရဲ့ Backend Contact API လင့်ခ်
-                        const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact";
+                        // Option 1: Localhost အတွက် (သင့်ကွန်ပျူတာမှာ uvicorn ဖြင့် Run နေချိန်သုံးရန်)
+                        const backendUrl = "http://localhost:8000/api/contact";
+
+                        // Option 2: Render Server အတွက် (Online ပေါ်အမှန်တကယ် တင်ထားချိန်သုံးရန်)
+                        //const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact"
 
                         const response = await fetch(backendUrl, {
                             method: 'POST',

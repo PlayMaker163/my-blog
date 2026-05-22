@@ -491,10 +491,10 @@ function initActiveUsersTracking() {
     // ==========================================
 
     // Option 1: Localhost အတွက် (သင့်ကွန်ပျူတာမှာ uvicorn ဖြင့် Run နေချိန်သုံးရန်)
-    //const wsUrl = "ws://localhost:8000/ws";
+    const wsUrl = "ws://localhost:8000/ws";
 
     // Option 2: Render Server အတွက် (Online ပေါ်အမှန်တကယ် တင်ထားချိန်သုံးရန်)
-    const wsUrl = "wss://my-blog-5ygr.onrender.com/ws";
+    //const wsUrl = "wss://my-blog-5ygr.onrender.com/ws";
 
     // ==========================================
 
@@ -522,49 +522,3 @@ document.addEventListener("DOMContentLoaded", function () {
     initActiveUsersTracking();
 });
 
-// --- (စ) Contact Form Submit လုပ်ခြင်း (MongoDB သို့ ပို့ရန်) ---
-document.addEventListener("DOMContentLoaded", function () {
-    // ဤနေရာတွင် '.contact-form' အစား 'contact-form' ဟု id ဖြင့် ရှာရန် ပြင်ထားသည်
-    const contactForm = document.getElementById('contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            const data = {
-                name: name,
-                email: email,
-                message: message
-            };
-
-            try {
-                // သင်အသုံးပြုနေသော URL
-                const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact";
-
-                const response = await fetch(backendUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert("Message Sent Successfully! We will contact you soon.");
-                    contactForm.reset();
-                } else {
-                    alert("Error: " + result.detail);
-                }
-            } catch (error) {
-                console.error("Error sending message:", error);
-                alert("Something went wrong! Please check your connection.");
-            }
-        });
-    }
-});
