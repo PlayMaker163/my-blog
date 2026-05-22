@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timezone
+from datetime import datetime
 from fastapi import (
     FastAPI,
     HTTPException,
@@ -22,12 +22,10 @@ GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 
 client = AsyncIOMotorClient(MONGO_DETAILS)
 database = client.ai_digital_db
-
-# Collections များကို ကြေညာခြင်း
 user_collection = database.get_collection("users")
-contact_collection = database.get_collection(
-    "contacts"
-)  # Contact Form အတွက် Collection အသစ်
+
+# --- (က) Contact အတွက် MongoDB Collection သတ်မှတ်ခြင်း ---
+contact_collection = database.get_collection("contacts")
 
 app.add_middleware(
     CORSMiddleware,
@@ -37,18 +35,17 @@ app.add_middleware(
 )
 
 
-# --- Models ---
 class AuthData(BaseModel):
     token: str
 
 
-class ContactMessage(BaseModel):  # Contact Form မှ Data လက်ခံရန် Model
+# --- (ခ) Contact Form အတွက် လက်ခံမည့် Data Model ---
+class ContactMessage(BaseModel):
     name: str
     email: str
     message: str
 
 
-# --- Endpoints ---
 @app.post("/auth/google")
 async def verify_google_token(data: AuthData):
     try:
@@ -57,41 +54,39 @@ async def verify_google_token(data: AuthData):
         )
         user_data = {
             "google_id": idinfo["sub"],
-            "email": idinfo["email"],
-            "name": idinfo["name"],
+            "email": idinfo.get("email"),
+            "name": idinfo.get("name"),
             "picture": idinfo.get("picture"),
-            "last_login": datetime.now(timezone.utc),
+            "last_login": datetime.utcnow(),
         }
         await user_collection.update_one(
-            {"google_id": idinfo["sub"]}, {"$set": user_data}, upsert=True
+            {"google_id": user_data["google_id"]}, {"$set": user_data}, upsert=True
         )
-        return {"message": "Login successful", "user": user_data}
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Invalid Google token")
+        return {"status": "success", "user": user_data}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="Authentication failed")
 
 
+# --- (ဂ) အသစ်ထည့်သွင်းထားသော Contact API Endpoint ---
 @app.post("/api/contact")
-async def submit_contact(msg: ContactMessage):
+async def save_contact_message(data: ContactMessage):
     try:
-        # Pydantic model မှ dictionary သို့ပြောင်းခြင်း (Pydantic v2 အတွက် model_dump ကိုသုံးသည်)
-        contact_data = msg.model_dump() if hasattr(msg, "model_dump") else msg.dict()
-
-        # စာပို့သည့် အချိန်ကို ထည့်သွင်းခြင်း
-        contact_data["created_at"] = datetime.now(timezone.utc)
-
-        # MongoDB သို့ သိမ်းဆည်းခြင်း
-        result = await contact_collection.insert_one(contact_data)
-
-        if result.inserted_id:
-            return {"success": True, "message": "Message saved successfully!"}
-        else:
-            raise HTTPException(status_code=500, detail="Failed to save message")
-
+        contact_data = {
+            "name": data.name,
+            "email": data.email,
+            "message": data.message,
+            "submitted_at": datetime.utcnow(),
+        }
+        # MongoDB ထဲသို့ Data လှမ်းသွင်းခြင်း (contacts collection မရှိသေးပါက အလိုအလျောက် ဆောက်သွားမည်)
+        await contact_collection.insert_one(contact_data)
+        return {"status": "success", "message": "Message saved successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# --- WebSocket / Active Users Tracking ---
+# ==========================================
+# Real-time Active User Tracking (WebSocket)
+# ==========================================
 class ConnectionManager:
     def __init__(self):
         self.active_connections: list[WebSocket] = []
@@ -122,3 +117,10 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast_active_users()
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)

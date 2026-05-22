@@ -23,7 +23,6 @@
             <li><a href="index.html" data-key="nav-home">Home</a></li>
             <li><a href="about.html" data-key="nav-about">About Us</a></li>
             <li><a href="services.html" data-key="nav-services">Our Services</a></li>
-            <!-- <li><a href="#" data-key="nav-portfolio">Our Portfolio</a></li> -->
             <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
         </ul>
         <div class="nav-extras">
@@ -118,7 +117,6 @@
                     <li><a href="index.html" data-key="nav-home">Home</a></li>
                     <li><a href="about.html" data-key="nav-about">About Us</a></li>
                     <li><a href="services.html" data-key="nav-services">Services</a></li>
-                    <!-- <li><a href="#" data-key="nav-portfolio">Portfolio</a></li> -->
                     <li><a href="contact.html" data-key="nav-contact">Contact Us</a></li>
                 </ul>
             </div>
@@ -131,11 +129,61 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AI & Digital Solutions. All rights reserved.</p>
+            <p>© 2026 AI & Digital Solutions. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const contactForm = document.getElementById('contact-form');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function (e) {
+                    e.preventDefault(); // ခလုတ်နှိပ်သည့်အခါ Page ကြီး Refresh ဖြစ်သွားခြင်းကို တားဆီးရန်
+
+                    // Input အကွက်များထဲမှ တန်ဖိုးများကို ယူခြင်း
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    // Backend သို့ ပို့မည့် JSON Structure
+                    const data = {
+                        name: name,
+                        email: email,
+                        message: message
+                    };
+
+                    try {
+                        // Render ပေါ်ရှိ သင့်ရဲ့ Backend Contact API လင့်ခ်
+                        const backendUrl = "https://my-blog-5ygr.onrender.com/api/contact";
+
+                        const response = await fetch(backendUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok) {
+                            // အောင်မြင်ပါက Alert ပြပြီး စာရိုက်ထားသည်များကို ရှင်းထုတ်မည်
+                            alert("Message Sent Successfully! We will contact you soon.");
+                            contactForm.reset();
+                        } else {
+                            alert("Error: " + (result.detail || "Failed to send message"));
+                        }
+                    } catch (error) {
+                        console.error("Error sending message:", error);
+                        alert("Something went wrong! Please check your connection.");
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
