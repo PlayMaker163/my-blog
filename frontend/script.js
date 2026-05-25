@@ -491,10 +491,10 @@ function initActiveUsersTracking() {
     // ==========================================
 
     // Option 1: Localhost အတွက် (သင့်ကွန်ပျူတာမှာ uvicorn ဖြင့် Run နေချိန်သုံးရန်)
-    const wsUrl = "ws://localhost:8000/ws";
+    //const wsUrl = "ws://localhost:8000/ws";
 
     // Option 2: Render Server အတွက် (Online ပေါ်အမှန်တကယ် တင်ထားချိန်သုံးရန်)
-    //const wsUrl = "wss://my-blog-5ygr.onrender.com/ws";
+    const wsUrl = "wss://my-blog-5ygr.onrender.com/ws";
 
     // ==========================================
 
