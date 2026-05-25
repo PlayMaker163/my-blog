@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+import pytz  # အသစ်ထည့်ရန်
 from fastapi import (
     FastAPI,
     HTTPException,
@@ -23,8 +24,6 @@ GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 client = AsyncIOMotorClient(MONGO_DETAILS)
 database = client.ai_digital_db
 user_collection = database.get_collection("users")
-
-# --- (က) Contact အတွက် MongoDB Collection သတ်မှတ်ခြင်း ---
 contact_collection = database.get_collection("contacts")
 
 app.add_middleware(
@@ -34,12 +33,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Myanmar Timezone သတ်မှတ်ချက်
+MYANMAR_TZ = pytz.timezone("Asia/Yangon")
+
 
 class AuthData(BaseModel):
     token: str
 
 
-# --- (ခ) Contact Form အတွက် လက်ခံမည့် Data Model ---
 class ContactMessage(BaseModel):
     name: str
     email: str
@@ -57,7 +58,8 @@ async def verify_google_token(data: AuthData):
             "email": idinfo.get("email"),
             "name": idinfo.get("name"),
             "picture": idinfo.get("picture"),
-            "last_login": datetime.utcnow(),
+            # မြန်မာစံတော်ချိန်ဖြင့် သိမ်းဆည်းခြင်း
+            "last_login": datetime.now(MYANMAR_TZ),
         }
         await user_collection.update_one(
             {"google_id": user_data["google_id"]}, {"$set": user_data}, upsert=True
@@ -67,7 +69,6 @@ async def verify_google_token(data: AuthData):
         raise HTTPException(status_code=400, detail="Authentication failed")
 
 
-# --- (ဂ) အသစ်ထည့်သွင်းထားသော Contact API Endpoint ---
 @app.post("/api/contact")
 async def save_contact_message(data: ContactMessage):
     try:
@@ -75,18 +76,16 @@ async def save_contact_message(data: ContactMessage):
             "name": data.name,
             "email": data.email,
             "message": data.message,
-            "submitted_at": datetime.utcnow(),
+            # မြန်မာစံတော်ချိန်ဖြင့် သိမ်းဆည်းခြင်း
+            "submitted_at": datetime.now(MYANMAR_TZ),
         }
-        # MongoDB ထဲသို့ Data လှမ်းသွင်းခြင်း (contacts collection မရှိသေးပါက အလိုအလျောက် ဆောက်သွားမည်)
         await contact_collection.insert_one(contact_data)
         return {"status": "success", "message": "Message saved successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ==========================================
-# Real-time Active User Tracking (WebSocket)
-# ==========================================
+# ... (WebSocket အပိုင်းကတော့ အရင်အတိုင်းပဲ ထားနိုင်ပါတယ်)
 class ConnectionManager:
     def __init__(self):
         self.active_connections: list[WebSocket] = []
