@@ -58,8 +58,8 @@ async def verify_google_token(data: AuthData):
             "email": idinfo.get("email"),
             "name": idinfo.get("name"),
             "picture": idinfo.get("picture"),
-            # မြန်မာစံတော်ချိန်ဖြင့် သိမ်းဆည်းခြင်း
-            "last_login": datetime.now(MYANMAR_TZ),
+            # ဒီနေရာမှာ .strftime("%Y-%m-%d %I:%M:%S %p") ကို ထည့်လိုက်ပါပြီ
+            "last_login": datetime.now(MYANMAR_TZ).strftime("%Y-%m-%d %I:%M:%S %p"),
         }
         await user_collection.update_one(
             {"google_id": user_data["google_id"]}, {"$set": user_data}, upsert=True
@@ -76,8 +76,8 @@ async def save_contact_message(data: ContactMessage):
             "name": data.name,
             "email": data.email,
             "message": data.message,
-            # မြန်မာစံတော်ချိန်ဖြင့် သိမ်းဆည်းခြင်း
-            "submitted_at": datetime.now(MYANMAR_TZ),
+            # ဒီနေရာမှာ .strftime("%Y-%m-%d %I:%M:%S %p") ကို ထည့်လိုက်ပါပြီ
+            "submitted_at": datetime.now(MYANMAR_TZ).strftime("%Y-%m-%d %I:%M:%S %p"),
         }
         await contact_collection.insert_one(contact_data)
         return {"status": "success", "message": "Message saved successfully"}
@@ -85,7 +85,9 @@ async def save_contact_message(data: ContactMessage):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ... (WebSocket အပိုင်းကတော့ အရင်အတိုင်းပဲ ထားနိုင်ပါတယ်)
+# ==========================================
+# Real-time Active User Tracking (WebSocket)
+# ==========================================
 class ConnectionManager:
     def __init__(self):
         self.active_connections: list[WebSocket] = []
